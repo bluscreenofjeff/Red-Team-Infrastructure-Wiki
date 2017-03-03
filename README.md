@@ -207,13 +207,15 @@ Cobalt Strike modifies its traffic with Malleable C2 profiles. Profiles provide 
 
 
 ## Empire
-Empire uses Communication Profiles, which provide customization options for the GET request URIs, user agent, and headers. The profile consists of each element, separated by the pipe character, in a text file placed into the `%EmpireDirectory%/data/profiles` directory.
+Empire uses Communication Profiles, which provide customization options for the GET request URIs, user agent, and headers. The profile consists of each element, separated by the pipe character, and set with the `set DefaultProfile` option in the `listeners` context menu.
 
 Here is a sample default profile:
 
 ```bash
 "/CWoNaJLBo/VTNeWw11212/|Mozilla/4.0 (compatible; MSIE 6.0;Windows NT 5.1)|Accept:image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*|Accept-Language:en-en"
 ```
+
+Alternatively, the DefaultProfile can be set by modifying the file ``/setup/setup_database.py` before Empire’s initial setup. This will change the default Communication Profile that Empire will use.
 
 * [Default Empire Communication Profiles (in Empire GitHub repo)](https://github.com/EmpireProject/Empire/tree/master/data/profiles)
 * [How to Make Communication Profiles for Empire - Jeff Dimmock](https://bluescreenofjeff.com/2017-03-01-how-to-make-communication-profiles-for-empire/)
