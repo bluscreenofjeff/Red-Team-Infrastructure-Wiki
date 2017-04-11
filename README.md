@@ -117,6 +117,7 @@ Phish-Domain *TAB* RELAY
 ```
 
 [Removing Sender’s IP Address From Email’s Received From Header](https://www.devside.net/wamp-server/removing-senders-ip-address-from-emails-received-from-header)
+
 [Removing Headers from Postfix setup](https://major.io/2013/04/14/remove-sensitive-information-from-email-headers-with-postfix/)
 
 ### Configure a catch-all address
@@ -215,7 +216,7 @@ Here is a sample default profile:
 "/CWoNaJLBo/VTNeWw11212/|Mozilla/4.0 (compatible; MSIE 6.0;Windows NT 5.1)|Accept:image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*|Accept-Language:en-en"
 ```
 
-Alternatively, the DefaultProfile can be set by modifying the file ``/setup/setup_database.py` before Empire’s initial setup. This will change the default Communication Profile that Empire will use.
+Alternatively, the DefaultProfile value can be set by modifying the file `/setup/setup_database.py` before Empire’s initial setup. This will change the default Communication Profile that Empire will use.
 
 * [Default Empire Communication Profiles (in Empire GitHub repo)](https://github.com/EmpireProject/Empire/tree/master/data/profiles)
 * [How to Make Communication Profiles for Empire - Jeff Dimmock](https://bluescreenofjeff.com/2017-03-01-how-to-make-communication-profiles-for-empire/)
