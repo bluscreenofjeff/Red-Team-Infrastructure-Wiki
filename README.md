@@ -192,6 +192,7 @@ The intention behind redirecting C2 traffic is twofold: obscure the backend team
 * [Official Apache 2.4 mod_rewrite Documentation](http://httpd.apache.org/docs/current/rewrite/)
 * [Apache mod_rewrite Introduction](https://httpd.apache.org/docs/2.4/en/rewrite/intro.html)
 * [An In-Depth Guide to mod_rewrite for Apache](http://code.tutsplus.com/tutorials/an-in-depth-guide-to-mod_rewrite-for-apache--net-6708)
+* [Mod_Rewrite/.htaccess Syntax Checker](http://www.htaccesscheck.com/)
 
 # Modifying C2 Traffic
 
