@@ -146,8 +146,9 @@ Add the following line to the end of `/etc/mail/virtusertable`:
 socat can be used to redirect incoming DNS packets on port 53 to our teamserver. While this method works, some user’s have reported staging issues with Cobalt Strike and or latency issues using this method.
 Edit 4/21/2017: 
 The following socat command seems to work well thanks to testing from @xorrior:
-
+```
 socat udp4-recvfrom:53,reuseaddr,fork udp4-sendto:<IPADDRESS>; echo -ne
+```
 
 [Redirecting Cobalt Strike DNS Beacons - Steve Borosh](http://www.rvrsh3ll.net/blog/offensive/redirecting-cobalt-strike-dns-beacons/)
 
