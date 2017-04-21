@@ -102,7 +102,9 @@ Another tool, [DomainHunter](https://github.com/minisllc/domainhunter) by Joe Ve
 
 There are two key actions we want to configure an SMTP redirector to perform:
 
-### Remove previous server headers
+### Sendmail
+
+#### Remove previous server headers
 Add the following line to the end of `/etc/mail/sendmail.mc`:
 
 ```bash
@@ -120,7 +122,7 @@ Phish-Domain *TAB* RELAY
 
 [Removing Headers from Postfix setup](https://major.io/2013/04/14/remove-sensitive-information-from-email-headers-with-postfix/)
 
-### Configure a catch-all address
+#### Configure a catch-all address
 This will relay any email received to *@phishdomain.com to a chosen email address. This is highly useful to receive any responses or bounce-backs to a phishing email.
 
 ```bash
@@ -136,10 +138,16 @@ FEATURE(`virtusertable', `hash -o /etc/mail/virtusertable.db')dnl
 Add the following line to the end of `/etc/mail/virtusertable`:
 
 ```bash
-@phishdomain.com          external-relay-address
+@phishdomain.com  external-relay-address
 ```
 
 *Note: The two fields should be tab-separated*
+
+### Postfix
+
+Postfix provides an easier alternative to sendmail with wider compatiblity. Postfix also offers full IMAP support with Dovecot. This allows testers to correspond in real-time with phishing targets who respond to the original message, rather than relying on the catch-all address and having to create a new message using your phishing tool.
+
+A full guide to setting up a Postfix mail server for phishing is available in Julian Catrambone's ([@n0pe_sled](https://twitter.com/n0pe_sled)) post [Mail Servers Made Easy](https://blog.inspired-sec.com/archive/2017/02/14/Mail-Server-Setup.html).
 
 ## DNS
 
@@ -180,12 +188,15 @@ When serving payload and web resources, we want to minimize the ability for inci
 
 ![Sample Apache Redirector Setup](./images/apache-redirector-setup.png)
 
-* [Strengthen Your Phishing with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-03-22-strengthen-your-phishing-with-apache-mod_rewrite-and-mobile-user-redirection/)
-* [Invalid URI Redirection with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-03-29-invalid-uri-redirection-with-apache-mod_rewrite/)
-* [Operating System Based Redirection with Apache mod_rewrite - Jeff Dimmock ](https://bluescreenofjeff.com/2016-04-05-operating-system-based-redirection-with-apache-mod_rewrite/)
-* [Combatting Incident Responders with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-04-12-combatting-incident-responders-with-apache-mod_rewrite/)
-* [Expire Phishing Links with Apache RewriteMap - Jeff Dimmock ](https://bluescreenofjeff.com/2016-04-19-expire-phishing-links-with-apache-rewritemap/)
-* [Apache mod_rewrite Grab Bag - Jeff Dimmock](https://bluescreenofjeff.com/2016-12-23-apache_mod_rewrite_grab_bag/)
+Apache Mod_Rewrite usage and examples by Jeff Dimmock:
+* [Strengthen Your Phishing with Apache mod_rewrite](https://bluescreenofjeff.com/2016-03-22-strengthen-your-phishing-with-apache-mod_rewrite-and-mobile-user-redirection/)
+* [Invalid URI Redirection with Apache mod_rewrite](https://bluescreenofjeff.com/2016-03-29-invalid-uri-redirection-with-apache-mod_rewrite/)
+* [Operating System Based Redirection with Apache mod_rewrite](https://bluescreenofjeff.com/2016-04-05-operating-system-based-redirection-with-apache-mod_rewrite/)
+* [Combatting Incident Responders with Apache mod_rewrite](https://bluescreenofjeff.com/2016-04-12-combatting-incident-responders-with-apache-mod_rewrite/)
+* [Expire Phishing Links with Apache RewriteMap](https://bluescreenofjeff.com/2016-04-19-expire-phishing-links-with-apache-rewritemap/)
+* [Apache mod_rewrite Grab Bag](https://bluescreenofjeff.com/2016-12-23-apache_mod_rewrite_grab_bag/)
+
+To automatically set up Apache Mod_Rewrite on a redirector server, check out Julain Catrambone's ([@n0pe_sled](https://twitter.com/n0pe_sled)) blog post [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) and the [accompanying tool](https://github.com/n0pe-sled/Apache2-Mod-Rewrite-Setup).
 
 ### C2 Redirection
 
