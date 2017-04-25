@@ -19,14 +19,14 @@ THANK YOU to all of the authors of the content linked to in this wiki!
       - [Remove previous server headers](#remove-previous-server-headers)
       - [Configure a catch-all address](#configure-a-catch-all-address)
     - [Postfix](#postfix)
-- [DNS](#dns)
-  - [socat](#socat)
-  - [iptables](#iptables)
-- [HTTP(S)](#https)
-  - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
-  - [Payloads and Web Redirection](#payloads-and-web-redirection)
-  - [C2 Redirection](#c2-redirection)
-  - [Other Apache mod_rewrite Resources](#other-apache-mod_rewrite-resources)
+  - [DNS](#dns)
+    - [socat](#socat)
+    - [iptables](#iptables)
+  - [HTTP(S)](#https)
+    - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
+    - [Payloads and Web Redirection](#payloads-and-web-redirection)
+    - [C2 Redirection](#c2-redirection)
+    - [Other Apache mod_rewrite Resources](#other-apache-mod_rewrite-resources)
 - [Modifying C2 Traffic](#modifying-c2-traffic)
   - [Cobalt Strike](#cobalt-strike)
   - [Empire](#empire)
@@ -202,9 +202,10 @@ To automatically set up Apache Mod_Rewrite on a redirector server, check out Jul
 
 ### C2 Redirection
 
-The intention behind redirecting C2 traffic is twofold: obscure the backend teamserver and appear to be a legitimate website if browsed to by an incident responder. Through the use of Apache mod_rewrite and [customized C2 profiles](#modifying-c2-traffic), we can reliably filter the real C2 traffic from investigative traffic.
+The intention behind redirecting C2 traffic is twofold: obscure the backend teamserver and appear to be a legitimate website if browsed to by an incident responder. Through the use of Apache mod_rewrite and [customized C2 profiles](#modifying-c2-traffic) or other proxying (such as with Flask), we can reliably filter the real C2 traffic from investigative traffic.
 
 * [Cobalt Strike HTTP C2 Redirectors with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-06-28-cobalt-strike-http-c2-redirectors-with-apache-mod_rewrite/)
+* [Expand Your Horizon Red Team – Modern SAAS C2 - Alex Rymdeko-Harvey (@killswitch-gui)](https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/)
 
 ### Other Apache mod_rewrite Resources
 * [mod-rewrite-cheatsheet.com](http://mod-rewrite-cheatsheet.com/)
