@@ -234,6 +234,9 @@ Domain Fronting is a technique used by censorship evasion services and apps to r
 
 For more detailed information about how Domain Fronting works, see the whitepaper [Blocking-resistant communication through domain fronting](https://www.bamsoftware.com/papers/fronting/) and the TOR Project’s [meek documentation](https://trac.torproject.org/projects/tor/wiki/doc/meek)
 
+Useful tool to hunt for potential Frontable Domains
+* [FindFrontableDomains](https://github.com/rvrsh3ll/FindFrontableDomains)
+
 ## Further Resources
 * [High-reputation Redirectors and Domain Fronting - Raphael Mudge](https://blog.cobaltstrike.com/2017/02/06/high-reputation-redirectors-and-domain-fronting/)
 * [Empire Domain Fronting Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
