@@ -13,6 +13,8 @@ THANK YOU to all of the authors of the content linked to in this wiki!
   - [Further Resources](#further-resources)
 - [Domains](#domains)
   - [Categorization and Blacklist Checking Resources](#categorization-and-blacklist-checking-resources)
+- [Phishing](#phishing)
+  - [Easy Web-Based Phishing](#easy-web-based-phishing)
 - [Redirectors](#redirectors)
   - [SMTP](#smtp)
     - [Remove previous server headers](#remove-previous-server-headers)
@@ -87,6 +89,9 @@ The tool [CatMyFish](https://github.com/Mr-Un1k0d3r/CatMyFish) by Charles Hamilt
 
 Another tool, [DomainHunter](https://github.com/minisllc/domainhunter) by Joe Vest ([@joevest](https://twitter.com/joevest)) & Andrew Chiles ([@andrewchiles](https://twitter.com/andrewchiles)), builds on what CatMyFish did and returns BlueCoat and IBM X-Force categorization, domain age, alternate available TLDs, Archive.org links, and an HTML report. Check out the [blog post](http://threatexpress.com/2017/03/leveraging-expired-domains-for-red-team-engagements/) about the tool's release for more details.
 
+Finally, make sure your DNS settings have propogated correctly.
+* [DNS Propogation Checker](https://dnschecker.org/)
+
 ## Categorization and Blacklist Checking Resources
 * [McAfee](https://trustedsource.org/en/feedback/url?action=checksingle)
 * [Fortiguard](http://www.fortiguard.com/iprep)
@@ -94,6 +99,41 @@ Another tool, [DomainHunter](https://github.com/minisllc/domainhunter) by Joe Ve
 * [SenderBase](https://www.senderbase.org/)
 * [MultiBL](http://multirbl.valli.org/)
 * [MXToolBox - Blacklists](https://mxtoolbox.com/blacklists.aspx)
+
+# Phishing Setup
+
+## Easy Web-Based Phishing
+The words easy and phishing never really seem to go together. Setting up a proper phishing infrastructure can be a real pain. The following tutorial will provide you with the knowledge and tools to quickly setup a phishing server that passes "most" spam filters to-date and provides you with a RoundCube interface for an easy phishing experience including two-way communications with your target. There are many setup's and posts out there regarding phishing. This is just one method.
+
+Once you have a domain that passes the proper checks listed in the previous section and have your phishing server spun-up, you'll need to create a couple "A" records for your domain as pictured.
+
+![DNS Setup](./images/setup_dns_a_record_for_ssl.PNG)
+
+Next, ssh into your phishing server and download the following script to setup the first half of your infrastructure. [Postfix-Server-Setup-Script](https://github.com/n0pe-sled/Postfix-Server-Setup)
+Set the script to executable such as "chmod +x ServerSetup.sh". Now we can run the setup script and begin the setup by selecting either option to prep your Debian or Ubuntu image, install the proper dependencies, and set the hostname.
+
+![Setup Script](./images/setup_script.PNG)
+
+The server will reboot. SSH back into the server and run the script again. This time, select option 4 to install a LetsEncrypt cert. Make sure you have your A records set and propogated by now. Follow the prompts and you should be greeted with a message letting you know that the certificates were created sucessfully.
+
+![Cert Creation](./images/cert-creation.PNG)
+
+Next, we follow script option 5 to setup the mail server. Again, follow the prompts and you'll be set with a working web server. Now, you should follow script option 7 to get get the DNS entries that you'll need to add to your DNS records. Tip: the script outputs those entries in the file dnsentries.txt.
+
+You're done, with part 1. Next, you're going to install the web front-end to phish from in just a few easy steps. Start by downloading the latest version of [iRedMail](http://www.iredmail.org/download.html) onto your phishing server. Easy way is to right click the download button, copy the link address, use wget to download directly onto your phishing server. Next, unpack it. You may need to install the bzip2 archiving program. Navigate into the unpacked folder and make the iRedMail.sh script executable (chmod +x iRedMail.sh). Execute the script as root, follow the prompts, and login to your iRedMail server dashboard!
+
+![iRedMail Dashboard](./images/iredadmin_dashboard.PNG)
+
+Now, create a user to phish with.
+
+![iRedMail Create User](./images/iredadmin_add_user.PNG)
+
+Login to the RoundCube interface with your new user and phish responsibly!
+
+![RoundCube Login](./images/roundcube_login.PNG)
+
+![RoundCube Send Mail](./images/final_phish_away.PNG)
+
 
 # Redirectors
 
