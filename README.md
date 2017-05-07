@@ -126,7 +126,7 @@ You're done, with part 1. Next, you're going to install the web front-end to phi
 
 Now, create a user to phish with.
 
-![iRedMail Create User](./images/iredadmin_add_user.PNG)
+![iRedMail Create User](./images/iredadmin_user_add.PNG)
 
 Login to the RoundCube interface with your new user and phish responsibly!
 
