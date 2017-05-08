@@ -120,7 +120,7 @@ The server will reboot. SSH back into the server and run the script again. This 
 
 ![Cert Creation](./images/cert-creation.PNG)
 
-Next, we follow script option 5 to setup the mail server. Again, follow the prompts and you'll be set with a working web server. Now, you should follow script option 7 to get get the DNS entries that you'll need to add to your DNS records. Tip: the script outputs those entries in the file dnsentries.txt.
+Next, we follow script option 5 to setup the mail server. Again, follow the prompts and you'll be set with a working mail server. Now, you should follow script option 7 to get get the DNS entries that you'll need to add to your DNS records. Tip: the script outputs those entries in the file dnsentries.txt.
 
 You're done, with part 1. Next, you're going to install the web front-end to phish from in just a few easy steps. Start by downloading the latest version of [iRedMail](http://www.iredmail.org/download.html) onto your phishing server. Easy way is to right click the download button, copy the link address, use wget to download directly onto your phishing server. Next, unpack it. You may need to install the bzip2 archiving program. Navigate into the unpacked folder and make the iRedMail.sh script executable (chmod +x iRedMail.sh). Execute the script as root, follow the prompts, and login to your iRedMail server dashboard!
 
