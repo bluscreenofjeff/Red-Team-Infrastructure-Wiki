@@ -193,6 +193,8 @@ A full guide to setting up a Postfix mail server for phishing is available in Ju
 
 ## DNS
 
+![Sample DNS Redirector Setup](./images/dns_redirection.png)
+
 ### socat
 socat can be used to redirect incoming DNS packets on port 53 to our teamserver. While this method works, some user’s have reported staging issues with Cobalt Strike and or latency issues using this method.
 Edit 4/21/2017: 
@@ -217,6 +219,13 @@ sysctl net.ipv4.ip_forward=1
 ```
 
 Also, change "FORWARD" chain policy to "ACCEPT"
+
+### DNS redirection can also be done behind NAT
+Some may have the requirement or need to host a c2 server on an internal network. Using a combination of IPTABLES, SOCAT, and reverse ssh tunnels, we can certainly acheive this in the following manner.
+
+![Sample DNS NAT Setup](./images/dns_nat.png)
+
+In this scenario we have our volitile redirector using IPTables to forward all DNS traffic using the rule example described earlier in this section. Next, we create an SSH reverse port forward tunnel from our internal c2 server, to our main redirector. This will forward any traffic the main redirector receives on port 6667 to the internal c2 server on port 6667. Now, start socat on our team server to fork any of the incoming TCP traffic on port 6667 to UDP port 53 which, is what our DNS c2 needs to listen on. Finally, we similarly setup a socat instance on the main redirector to redirect any incoming UDP port 53 traffic into our SSH tunnel on port 6667.
 
 ## HTTP(S)
 
