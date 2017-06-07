@@ -287,6 +287,8 @@ Here is a sample default profile:
 
 Alternatively, the DefaultProfile value can be set by modifying the file `/setup/setup_database.py` before Empire’s initial setup. This will change the default Communication Profile that Empire will use.
 
+In addition to the Communication Profile, consider customizing the Empire server's staging URIs, server headers, and defaut webpage content by following the steps presented in Joe Vest's ([@joevest](https://twitter.com/joevest)) post [Empire - Modifying Server C2 Indicators](http://threatexpress.com/2017/05/empire-modifying-server-c2-indicators/).
+
 * [Default Empire Communication Profiles (in Empire GitHub repo)](https://github.com/EmpireProject/Empire/tree/master/data/profiles)
 * [How to Make Communication Profiles for Empire - Jeff Dimmock](https://bluescreenofjeff.com/2017-03-01-how-to-make-communication-profiles-for-empire/)
 
