@@ -22,10 +22,12 @@ THANK YOU to all of the authors of the content linked to in this wiki!
       - [Configure a catch-all address](#configure-a-catch-all-address)
     - [Postfix](#postfix)
   - [DNS](#dns)
-    - [socat](#socat)
-    - [iptables](#iptables)
+    - [socat for DNS](#socat-for-dns)
+    - [iptables for DNS](#iptables-for-dns)
   - [HTTP(S)](#https)
-    - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
+    - [socat vs mod_rewrite](#socat-vs-modrewrite)
+    - [socat for HTTP](#socat-for-http)
+    - [iptables for HTTP](#iptables-for-http)
     - [Payloads and Web Redirection](#payloads-and-web-redirection)
     - [C2 Redirection](#c2-redirection)
     - [Other Apache mod_rewrite Resources](#other-apache-mod_rewrite-resources)
@@ -34,6 +36,7 @@ THANK YOU to all of the authors of the content linked to in this wiki!
   - [Empire](#empire)
 - [Domain Fronting](#domain-fronting)
   - [Further Resources](#further-resources)
+- [Obscuring Infrastructure](#obscuring-infrastructure)  
 - [Securing Infrastructure](#securing-infrastructure)
 - [General Tips](#general-tips)
 
@@ -195,7 +198,7 @@ A full guide to setting up a Postfix mail server for phishing is available in Ju
 
 ![Sample DNS Redirector Setup](./images/dns_redirection.png)
 
-### socat
+### socat for DNS
 socat can be used to redirect incoming DNS packets on port 53 to our teamserver. While this method works, some user’s have reported staging issues with Cobalt Strike and or latency issues using this method.
 Edit 4/21/2017: 
 The following socat command seems to work well thanks to testing from @xorrior:
@@ -206,7 +209,7 @@ socat udp4-recvfrom:53,reuseaddr,fork udp4-sendto:<IPADDRESS>; echo -ne
 [Redirecting Cobalt Strike DNS Beacons - Steve Borosh](http://www.rvrsh3ll.net/blog/offensive/redirecting-cobalt-strike-dns-beacons/)
 
 
-### iptables
+### iptables for DNS
 iptables DNS forwarding rules have been found to work well with Cobalt Strike. There does not seem to be any of the issues that socat has handling this type of traffic.
 
 An example DNS redirector rule-set is below.
@@ -231,7 +234,38 @@ In this scenario we have our volitile redirector using IPTables to forward all D
 
 ### socat vs mod_rewrite
 socat provides a ‘dumb pipe’ redirection. Any request socat receives on the specified source interface/port is redirected to the destination IP/port. There is no filtering or conditional redirecting. Apache mod_rewrite, on the other hand, provides a number of methods to strengthen your phishing and increase the resilience of your testing infrastructure. mod_rewrite has the ability to perform conditional redirection based on request attributes, such as URI, user agent, query string, operating system, and IP. Apache mod_rewrite uses htaccess files to configure rulesets for how Apache should handle each incoming request. Using these rules, you could, for instance, redirect requests to your server with the default wget user agent to a legitimate page on your target's website.
+
 In short, if your redirector needs to perform conditional redirection or advanced filtering, use Apache mod_rewrite. Otherwise, socat redirection with optional iptables filtering will suffice.
+
+### socat for HTTP
+
+socat can be used to redirect any incoming TCP packets on a specified port to our teamserver. 
+
+The basic syntax to redirect TCP port 80 on localhost to port 80 on another host is:
+
+```
+socat TCP4-LISTEN:80,fork TCP4:<REMOTE-HOST-IP-ADDRESS>:80
+```
+
+If your redirector is configured with more than one network interface, socat can be bound to a specific interface, by IP address, with the following syntax:
+
+```
+socat TCP4-LISTEN:80,bind=10.0.0.2,fork TCP4:1.2.3.4:80
+```
+In this example, 10.0.0.2 is one of the redirector's local IP addresses and 1.2.3.4 is the remote teamserver's IP address.
+
+### iptables for HTTP
+
+In addition to socat, iptables can perform 'dumb pipe' redirection via NAT. To forward the redirector's local port 80 to a remote host, use the following syntax:
+
+```
+iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination <REMOTE-HOST-IP-ADDRESS>:80
+iptables -t nat -A POSTROUTING -j MASQUERADE
+iptables -I FORWARD -j ACCEPT
+iptables -P FORWARD ACCEPT
+sysctl net.ipv4.ip_forward=1
+```
 
 ### Payloads and Web Redirection
 
@@ -246,6 +280,10 @@ Apache Mod_Rewrite usage and examples by Jeff Dimmock:
 * [Combatting Incident Responders with Apache mod_rewrite](https://bluescreenofjeff.com/2016-04-12-combatting-incident-responders-with-apache-mod_rewrite/)
 * [Expire Phishing Links with Apache RewriteMap](https://bluescreenofjeff.com/2016-04-19-expire-phishing-links-with-apache-rewritemap/)
 * [Apache mod_rewrite Grab Bag](https://bluescreenofjeff.com/2016-12-23-apache_mod_rewrite_grab_bag/)
+* [Serving Random Payloads with Apache mod_rewrite](https://bluescreenofjeff.com/2017-06-13-serving-random-payloads-with-apache-mod_rewrite/)
+
+Serving random payloads with NGINX:
+[Gist by jivoi](https://gist.github.com/jivoi/a33ace2e25515a31aa2ffbae246d98c9)
 
 To automatically set up Apache Mod_Rewrite on a redirector server, check out Julain Catrambone's ([@n0pe_sled](https://twitter.com/n0pe_sled)) blog post [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) and the [accompanying tool](https://github.com/n0pe-sled/Apache2-Mod-Rewrite-Setup).
 
@@ -308,6 +346,21 @@ Useful tool to hunt for potential Frontable Domains
 * [Empire Domain Fronting Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
 * [Domain Fronting via Cloudfront Alternate Domains - Vincenty Yiu (@vysecurity)](https://www.mdsec.co.uk/2017/02/domain-fronting-via-cloudfront-alternate-domains/)
 * [Escape and Evasion Egressing Restricted Networks - Tom Steele (@_tomsteele) and Chris Patten](https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks)
+
+# Obscuring Infrastructure
+
+Attack infrastructure is often easy to identify, appearing like a shell of a legitimate server. We will need to take additional steps with our infrastructure to increase the likelihood of blending in with real servers amongst either the target organization or services the target may conceivably use.
+
+[Redirectors](#redirectors) can help blend in by [redirecting invalid URIs](https://bluescreenofjeff.com/2016-03-29-invalid-uri-redirection-with-apache-mod_rewrite/), [expiring phishing payload links](https://bluescreenofjeff.com/2016-04-19-expire-phishing-links-with-apache-rewritemap/), or [blocking common incident responder techniques](https://bluescreenofjeff.com/2016-04-12-combatting-incident-responders-with-apache-mod_rewrite/); however, attention should also be paid to the underlying host and its indicators.
+
+For example, in the post [Fall of an Empire](http://securesql.info/hacks/2017/4/5/fall-of-an-empire), John Menerick ([@Lord_SQL](https://twitter.com/Lord_SQL)) covers methods to detect Empire servers on the internet.
+
+To combat these and similar indicators, it's a good idea to [modify C2 traffic patterns](#modifying-c2-traffic), modify server landing pages, restrict open ports, and modify default response headers.
+
+For more details about how to do these and other tactics for multiple attack frameworks, check out these posts:
+* [Empire – Modifying Server C2 Indicators](http://threatexpress.com/2017/05/empire-modifying-server-c2-indicators/) - [Andrew Chiles](https://twitter.com/andrewchiles)
+* [Hunting Red Team Empire C2 Infrastructure](http://www.chokepoint.net/2017/04/hunting-red-team-empire-c2.html) - [chokepoint.net](http://www.chokepoint.net/)
+* [Hunting Red Team Meterpreter C2 Infrastructure](http://www.chokepoint.net/2017/04/hunting-red-team-meterpreter-c2.html) - [chokepoint.net](http://www.chokepoint.net/)
 
 
 # Securing Infrastructure
