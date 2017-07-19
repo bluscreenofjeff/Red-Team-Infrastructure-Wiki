@@ -105,6 +105,7 @@ Finally, make sure your DNS settings have propogated correctly.
 * [Fortiguard](http://www.fortiguard.com/iprep)
 * [Symantec + BlueCoat](http://sitereview.bluecoat.com/sitereview.jsp)
 * [Checkpoint](https://www.checkpoint.com/urlcat/main.htm)
+* [Palo Alto](https://urlfiltering.paloaltonetworks.com/)
 * [Chameleon](https://github.com/mdsecactivebreach/Chameleon)
 * [SenderBase](https://www.senderbase.org/)
 * [MultiBL](http://multirbl.valli.org/)
