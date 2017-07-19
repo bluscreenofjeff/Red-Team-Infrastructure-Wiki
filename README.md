@@ -2,7 +2,7 @@ This wiki is intended to provide a resources for setting up a resilient Red Team
 
 If you have an addition you'd like to make, please submit a Pull Request or file an issue on the repo.
 
-THANK YOU to all of the authors of the content linked to in this wiki!
+THANK YOU to all of the authors of the content referenced in this wiki and to all who [contributed]()!
 
 # Table of Contents
 
@@ -39,6 +39,7 @@ THANK YOU to all of the authors of the content linked to in this wiki!
 - [Obscuring Infrastructure](#obscuring-infrastructure)  
 - [Securing Infrastructure](#securing-infrastructure)
 - [General Tips](#general-tips)
+- [Thanks to Contributors](#thanks-to-contributors)
 
 # Design Considerations
 
@@ -103,6 +104,7 @@ Finally, make sure your DNS settings have propogated correctly.
 * [McAfee](https://trustedsource.org/en/feedback/url?action=checksingle)
 * [Fortiguard](http://www.fortiguard.com/iprep)
 * [Symantec + BlueCoat](http://sitereview.bluecoat.com/sitereview.jsp)
+* [Checkpoint](https://www.checkpoint.com/urlcat/main.htm)
 * [Chameleon](https://github.com/mdsecactivebreach/Chameleon)
 * [SenderBase](https://www.senderbase.org/)
 * [MultiBL](http://multirbl.valli.org/)
@@ -406,3 +408,19 @@ Of course, this list is not exhaustive of what you can do to secure a team serve
 * **Implement high-value event alerting** - Configure the attack infrastructure to generate alerts for high-value events, such as new C2 sessions or credential capture hits. One popular way of implementing alerting is via a chat platform's API, such as Slack. Check out the following posts about Slack alerting: [Slack Shell Bot - Russel Van Tuyl (@Ne0nd0g)](https://www.swordshield.com/2016/11/slackshellbot/), [Slack Notifications for Cobalt Strike - Andrew Chiles (@AndrewChiles)](http://threatexpress.com/2016/12/slack-notifications-for-cobalt-strike/), [Slack Bots for Trolls and Work - Jeff Dimmock (@bluscreenfojeff)](http://bluescreenofjeff.com/2017-04-11-slack-bots-for-trolls-and-work/)
 
 * **Fingerprint incident response** - If possible, try to passively or actively fingerprint IR actions before the assessment starts. For example, send a mediocre phishing email to the target (using unrelated infrastructure) and monitor traffic that infrastructure receives. IR team investigations can disclose a good deal of information about how the team operates and what infrastructure they use. If this can be determined ahead of the assessment, it can be filtered or redirected outright.
+
+
+# Thanks to Contributors
+A BIG THANK YOU to all the following people (listed alphabetically) who contributed tools, tips, or links to include in the wiki, and another THANK YOU to anyone who wrote a tool or post referenced in this wiki!
+
+* [@andrewchiles - Andrew Chiles](https://twitter.com/andrewchiles)
+* [@armitagehacker - Raphael Mudge](https://twitter.com/armitagehacker)
+* [@bspence7337](https://twitter.com/bspence7337)
+* [@domchell - Dominic Chell](https://twitter.com/domchell)
+* [@jivoi - EK](https://twitter.com/jivoi)
+* [@joevest - Joe Vest](https://twitter.com/joevest)
+* [@killswitch_gui - Alex Rymdeko-Harvey](https://twitter.com/killswitch_gui)
+* [@ne0nd0g - Russel Van Tuyl](https://twitter.com/ne0nd0g)
+* [@n0pe_sled - Julian Catrambone](https://twitter.com/n0pe_sled)
+* [@vysecurity - Vincent Yiu](https://twitter.com/vysecurity)
+* [@xorrior - Chris Ross](https://twitter.com/xorrior)
