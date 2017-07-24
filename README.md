@@ -34,8 +34,10 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
 - [Modifying C2 Traffic](#modifying-c2-traffic)
   - [Cobalt Strike](#cobalt-strike)
   - [Empire](#empire)
-- [Domain Fronting](#domain-fronting)
-  - [Further Resources](#further-resources)
+- [Third-Party C2 Channels](#third-party-c2-channels)
+  - [Domain Fronting](#domain-fronting)
+    - [Further Resources on Domain Fronting](#further-resources-on-domain-fronting)
+  - [PaaS Redirectors](#paas-redirectors)
 - [Obscuring Infrastructure](#obscuring-infrastructure)  
 - [Securing Infrastructure](#securing-infrastructure)
 - [General Tips](#general-tips)
@@ -343,7 +345,10 @@ In addition to the Communication Profile, consider customizing the Empire server
 * [Default Empire Communication Profiles (in Empire GitHub repo)](https://github.com/EmpireProject/Empire/tree/master/data/profiles)
 * [How to Make Communication Profiles for Empire - Jeff Dimmock](https://bluescreenofjeff.com/2017-03-01-how-to-make-communication-profiles-for-empire/)
 
-# Domain Fronting
+# Third-Party C2 Channels
+Leveraging trusted, legitimate web services for C2 can provide a valuable leg-up over using domains and infrastructure you've configured yourself. Configuration time and complexity varies based on the technique and service being used. A popular example of leveraging third-party services for C2 redirection is Domain Fronting.
+
+## Domain Fronting
 
 Domain Fronting is a technique used by censorship evasion services and apps to route traffic through legitimate and highly-trusted domains. Popular services that support Domain Fronting include [Google App Engine](https://cloud.google.com/appengine/), [Amazon CloudFront](https://aws.amazon.com/cloudfront/), and [Microsoft Azure](https://azure.microsoft.com/). In a nutshell, traffic uses the DNS and SNI name of the trusted service provider, Google is used in the example below. When the traffic is received by the Edge Server (ex: located at gmail.com), the packet is forwarded to the Origin Server (ex: phish.appspot.com) specified in the packet’s Host header. Depending on the service provider, the Origin Server will either directly forward traffic to a specified domain, which we’ll point to our team server, or a proxy app will be required to perform the final hop forwarding.
 
@@ -354,12 +359,19 @@ For more detailed information about how Domain Fronting works, see the whitepape
 Useful tool to hunt for potential Frontable Domains
 * [FindFrontableDomains](https://github.com/rvrsh3ll/FindFrontableDomains)
 
-## Further Resources
+### Further Resources on Domain Fronting
 * [High-reputation Redirectors and Domain Fronting - Raphael Mudge](https://blog.cobaltstrike.com/2017/02/06/high-reputation-redirectors-and-domain-fronting/)
 * [Empire Domain Fronting Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
 * [Domain Fronting via Cloudfront Alternate Domains - Vincenty Yiu (@vysecurity)](https://www.mdsec.co.uk/2017/02/domain-fronting-via-cloudfront-alternate-domains/)
 * [Escape and Evasion Egressing Restricted Networks - Tom Steele (@_tomsteele) and Chris Patten](https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks)
 * [Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike](https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/) - [Will Vandevanter and Shay Nahari of CyberArk](https://www.cyberark.com)
+
+## PaaS Redirectors
+Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
+
+To set the redirection up, you will need to identify a service that issues a static subdomain or URL as part of an instance. Then, either the instance will need to be configured with network or application-based redirection. The instance will act as a proxy, similar to the other redirectors discussed on this wiki.
+
+Specific implementation can vary greatly based on the service; however, for an example using Heroku, check out the blog post [Expand Your Horizon Red Team – Modern SaaS C2](https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/) by [Alex Rymdeko-Harvey (@Killswitch_GUI)](https://twitter.com/Killswitch_GUI).
 
 # Obscuring Infrastructure
 
