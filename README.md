@@ -2,7 +2,7 @@ This wiki is intended to provide a resources for setting up a resilient Red Team
 
 If you have an addition you'd like to make, please submit a Pull Request or file an issue on the repo.
 
-THANK YOU to all of the authors of the content referenced in this wiki and to all who [contributed]()!
+THANK YOU to all of the authors of the content referenced in this wiki and to all who [contributed](#thanks-to-contributors)!
 
 # Table of Contents
 
@@ -356,13 +356,17 @@ Domain Fronting is a technique used by censorship evasion services and apps to r
 
 For more detailed information about how Domain Fronting works, see the whitepaper [Blocking-resistant communication through domain fronting](https://www.bamsoftware.com/papers/fronting/) and the TOR Project’s [meek documentation](https://trac.torproject.org/projects/tor/wiki/doc/meek)
 
-Useful tool to hunt for potential Frontable Domains
-* [FindFrontableDomains](https://github.com/rvrsh3ll/FindFrontableDomains)
+In addition to the standard frontable domains, such as any google.com domain, it's possible to leverage other legitimate domains for fronting. 
+
+For more information about hunting frontable domains, check out:
+* [Domain Fronting via Cloudfront Alternate Domains - Vincenty Yiu (@vysecurity)](https://www.mdsec.co.uk/2017/02/domain-fronting-via-cloudfront-alternate-domains/)
+* [Finding Domain frontable Azure domains - thoth / Fionnbharr (@a_profligate)](https://theobsidiantower.com/2017/07/24/d0a7cfceedc42bdf3a36f2926bd52863ef28befc.html)
+* [Google Groups: Blog post on finding 2000+ Azure domains using Censys](https://groups.google.com/forum/#!topic/traffic-obf/7ygIXCPebwQ)
+* [FindFrontableDomains tool - Steve Borosh (@rvrsh3ll)](https://github.com/rvrsh3ll/FindFrontableDomains)
 
 ### Further Resources on Domain Fronting
 * [High-reputation Redirectors and Domain Fronting - Raphael Mudge](https://blog.cobaltstrike.com/2017/02/06/high-reputation-redirectors-and-domain-fronting/)
 * [Empire Domain Fronting Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
-* [Domain Fronting via Cloudfront Alternate Domains - Vincenty Yiu (@vysecurity)](https://www.mdsec.co.uk/2017/02/domain-fronting-via-cloudfront-alternate-domains/)
 * [Escape and Evasion Egressing Restricted Networks - Tom Steele (@_tomsteele) and Chris Patten](https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks)
 * [Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike](https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/) - [Will Vandevanter and Shay Nahari of CyberArk](https://www.cyberark.com)
 
@@ -421,6 +425,8 @@ Of course, this list is not exhaustive of what you can do to secure a team serve
 
 * **Split assets among different service providers and regions** - Infrastructure assets should be spread across multiple service providers and geographic regions. Blue Team members may raise monitoring thresholds against providers identified as actively performing an attack and may even outright block a given service provider. Note: keep international privacy laws in mind if sending encrypted or sensitive data across borders.
 
+* **Don't go overboard** - It's easy to get excited about advanced techniques and want to throw the kitchen sink at a target. If you are emulating a specific adversarial threat, only leverage techniques the real threat actor used or techniques within the skillset of the threat actor. If your red team testing will attack the same target long-term, consider starting "easy" and working through the more advanced tradecraft as your assessments go on. Evolving the red team's technique alongside the blue team's will consistenly push the organization forward, whereas hitting the blue team with everything at once may overwhelm the blue team and slow the learning process.
+
 * **Monitor logs** - All logs should be monitored throughout the engagement: SMTP logs, Apache logs, tcpdump on socat redirectors, iptables logs (specific to traffic forwarding or targeted filtering), weblogs, Cobalt Strike/Empire/MSF logs. Forward logs to a central location, such as with rsyslog, for easier monitoring. Operator terminal data retention may come in handy for going over an historical command usaeage during an operation. @Killswitch_GUI created an easy-to-use program named lTerm that will log all bash terminal commands to a central location. [Log all terminal output with lTerm](https://github.com/killswitch-GUI/lterm)
 
 * **Implement high-value event alerting** - Configure the attack infrastructure to generate alerts for high-value events, such as new C2 sessions or credential capture hits. One popular way of implementing alerting is via a chat platform's API, such as Slack. Check out the following posts about Slack alerting: [Slack Shell Bot - Russel Van Tuyl (@Ne0nd0g)](https://www.swordshield.com/2016/11/slackshellbot/), [Slack Notifications for Cobalt Strike - Andrew Chiles (@AndrewChiles)](http://threatexpress.com/2016/12/slack-notifications-for-cobalt-strike/), [Slack Bots for Trolls and Work - Jeff Dimmock (@bluscreenfojeff)](http://bluescreenofjeff.com/2017-04-11-slack-bots-for-trolls-and-work/)
@@ -440,5 +446,6 @@ A BIG THANK YOU to all the following people (listed alphabetically) who contribu
 * [@killswitch_gui - Alex Rymdeko-Harvey](https://twitter.com/killswitch_gui)
 * [@ne0nd0g - Russel Van Tuyl](https://twitter.com/ne0nd0g)
 * [@n0pe_sled - Julian Catrambone](https://twitter.com/n0pe_sled)
+* [@tifkin_ - Lee Christensen](https://twitter.com/tifkin_)
 * [@vysecurity - Vincent Yiu](https://twitter.com/vysecurity)
 * [@xorrior - Chris Ross](https://twitter.com/xorrior)
