@@ -13,8 +13,10 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
   - [Further Resources](#further-resources)
 - [Domains](#domains)
   - [Categorization and Blacklist Checking Resources](#categorization-and-blacklist-checking-resources)
-- [Phishing](#phishing)
+- [Phishing](#phishing-setup)
   - [Easy Web-Based Phishing](#easy-web-based-phishing)
+  - [Cobalt Strike Phishing](#cobalt-strike-phishing)
+  - [Phishing Frameworks](#phishing-frameworks)
 - [Redirectors](#redirectors)
   - [SMTP](#smtp)
     - [Sendmail](#sendmail)
@@ -154,6 +156,41 @@ Login to the RoundCube interface with your new user and phish responsibly!
 
 ![RoundCube Send Mail](./images/final_phish_away.PNG)
 
+## Cobalt Strike Phishing
+Cobalt Strike provides customizable spearphishing functionality to support pentest or red team email phishing. It supports templates in HTML and/or plaintext formats, attachments, a bounceback address, URL embedding, remote SMTP server usage, and per-message send delays. Another interesting feature is the ability to add a unique token to each user's embedded URL for click tracking.
+
+![Cobalt Strike Spearphishing Popup](/images/cobalt-strike-phishing-popup.png)
+
+For more detailed information, check out these resources:
+
+* [Cobalt Strike - Spear Phishing documentation](https://www.cobaltstrike.com/help-spear-phish)
+* [Cobalt Strike Blog - What's the go-to phishing technique or exploit?](https://blog.cobaltstrike.com/2014/12/17/whats-the-go-to-phishing-technique-or-exploit/)
+* [Spear phishing with Cobalt Strike - Raphael Mudge](https://www.youtube.com/watch?v=V7UJjVcq2Ao)
+* [Advanced Threat Tactics (3 of 9) - Targeted Attacks - Raphael Mudge](https://www.youtube.com/watch?v=CxQfWtqpwRs)
+
+
+## Phishing Frameworks
+
+Beyond rolling your own phishing setup or using a pentest or red teaming fraework, like Cobalt Strike, there are numerous tools and frameworks dedicated to email phishing. While this wiki won't go into detail about each framework, a few resources for each are collected below:
+
+### Gophish
+* [Gophish Official Site](https://getgophish.com/)
+* [Gophish GitHub Repo](https://github.com/gophish/gophish)
+* [Gophish User Guide](https://www.gitbook.com/book/gophish/user-guide/details)
+
+### Phishing Frenzy
+
+* [Phishing Frenzy Official Site](https://www.phishingfrenzy.com/)
+* [Phishing Frenzy GitHub Repo](https://github.com/pentestgeek/phishing-frenzy)
+* [Introducing Phishing Frenzy - Brandon McCann (@zeknox)](https://www.pentestgeek.com/phishing/introducing-phishing-frenzy)
+
+### The Social-Engineer Toolkit
+* [The Social-Engineer Toolkit GitHub Repo](https://github.com/trustedsec/social-engineer-toolkit)
+* [The Social-Engineer Toolkit User Manual](https://github.com/trustedsec/social-engineer-toolkit/raw/master/readme/User_Manual.pdf)
+
+### FiercePhish (formerly FirePhish)
+* [FiercePhish GitHub Repo](https://github.com/Raikia/FiercePhish)
+* [FiercePhish Wiki](https://github.com/Raikia/FiercePhish/wiki)
 
 # Redirectors
 
