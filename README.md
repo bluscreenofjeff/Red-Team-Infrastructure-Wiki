@@ -404,10 +404,12 @@ For more information about hunting frontable domains, check out:
 * [FindFrontableDomains tool - Steve Borosh (@rvrsh3ll)](https://github.com/rvrsh3ll/FindFrontableDomains)
 
 ### Further Resources on Domain Fronting
+* [Simplifying Domain Fronting (@malcomvetter)](https://medium.com/@malcomvetter/simplifying-domain-fronting-8d23dcb694a0)
 * [High-reputation Redirectors and Domain Fronting - Raphael Mudge](https://blog.cobaltstrike.com/2017/02/06/high-reputation-redirectors-and-domain-fronting/)
 * [Empire Domain Fronting Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
 * [Escape and Evasion Egressing Restricted Networks - Tom Steele (@_tomsteele) and Chris Patten](https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks)
 * [Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike](https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/) - [Will Vandevanter and Shay Nahari of CyberArk](https://www.cyberark.com)
+* [SSL Domain Fronting 101 (@424f424f)](http://www.rvrsh3ll.net/blog/offensive/ssl-domain-fronting-101/)
 
 ## PaaS Redirectors
 Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
