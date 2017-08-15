@@ -30,7 +30,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
     - [iptables for HTTP](#iptables-for-http)
     - [Payloads and Web Redirection](#payloads-and-web-redirection)
     - [C2 Redirection](#c2-redirection)
-    - [C2 Redirection with HTTPS](#C2-redirection-with-https)
+      - [C2 Redirection with HTTPS](#c2-redirection-with-https)
     - [Other Apache mod_rewrite Resources](#other-apache-mod_rewrite-resources)
 - [Modifying C2 Traffic](#modifying-c2-traffic)
   - [Cobalt Strike](#cobalt-strike)
@@ -312,7 +312,7 @@ The intention behind redirecting C2 traffic is twofold: obscure the backend team
 * [Cobalt Strike HTTP C2 Redirectors with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-06-28-cobalt-strike-http-c2-redirectors-with-apache-mod_rewrite/)
 * [Expand Your Horizon Red Team – Modern SAAS C2 - Alex Rymdeko-Harvey (@killswitch-gui)](https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/)
 
-### C2 Redirection with HTTPS
+#### C2 Redirection with HTTPS
 
 Building on "C2 Redirection" above, another method is to have your redirecting server use Apache's SSL Proxy Engine to accept inbound SSL requests, and proxy those to requests to a reverse-HTTPS listener. Encryption is used at all stages, and you can rotate SSL certificates on your redirector as needed.
 
