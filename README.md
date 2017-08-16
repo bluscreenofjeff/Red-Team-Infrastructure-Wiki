@@ -503,6 +503,7 @@ A BIG THANK YOU to all the following people (listed alphabetically) who contribu
 
 * [@andrewchiles - Andrew Chiles](https://twitter.com/andrewchiles)
 * [@armitagehacker - Raphael Mudge](https://twitter.com/armitagehacker)
+* [@beyondnegative - Jeremy Johnson](https://twitter.com/beyondnegative)
 * [@bspence7337](https://twitter.com/bspence7337)
 * [@domchell - Dominic Chell](https://twitter.com/domchell)
 * [@jivoi - EK](https://twitter.com/jivoi)
