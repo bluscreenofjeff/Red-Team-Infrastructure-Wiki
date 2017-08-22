@@ -87,6 +87,8 @@ Here is a sample design, keeping functional segregation and redirector usage in 
 
 * [6 Red Team Infrastructure Tips - Alex Rymdeko-Harvey (@killswitch-gui)](https://cybersyndicates.com/2016/11/top-red-team-tips/)
 
+* [How to Build a C2 Infrastructure with Digital Ocean – Part 1 - Lee Kagan (@invokethreatguy)](https://www.blackhillsinfosec.com/build-c2-infrastructure-digital-ocean-part-1/)
+
 # Domains
 Domain reputation will vary greatly depending on the products your target is using, as well as their configuration. As such, choosing a domain that will work on your target is not an exact science. Open source intelligence gathering (OSINT) will be critical in helping make a best guess at the state of controls and which resources to check domains against. Luckily, online advertisers face the same problems and have created some solutions we can leverage.
 
@@ -251,6 +253,8 @@ A full guide to setting up a Postfix mail server for phishing is available in Ju
 
 ![Sample DNS Redirector Setup](./images/dns_redirection.png)
 
+Note: When using C2 redirectors, a foreign listener should be configured on your post-exploitation framework to send staging traffic through the redirector domain. This will cause the compromised host to stage through the redirector like the C2 traffic itself.
+
 ### socat for DNS
 socat can be used to redirect incoming DNS packets on port 53 to our team server. While this method works, some user’s have reported staging issues with Cobalt Strike and or latency issues using this method.
 Edit 4/21/2017: 
@@ -286,6 +290,8 @@ Some may have the requirement or need to host a c2 server on an internal network
 In this scenario we have our volitile redirector using IPTables to forward all DNS traffic using the rule example described earlier in this section. Next, we create an SSH reverse port forward tunnel from our internal c2 server, to our main redirector. This will forward any traffic the main redirector receives on port 6667 to the internal c2 server on port 6667. Now, start socat on our team server to fork any of the incoming TCP traffic on port 6667 to UDP port 53 which, is what our DNS c2 needs to listen on. Finally, we similarly setup a socat instance on the main redirector to redirect any incoming UDP port 53 traffic into our SSH tunnel on port 6667.
 
 ## HTTP(S)
+
+Note: When using C2 redirectors, a foreign listener should be configured on your post-exploitation framework to send staging traffic through the redirector domain. This will cause the compromised host to stage through the redirector like the C2 traffic itself.
 
 ### socat vs mod_rewrite
 socat provides a ‘dumb pipe’ redirection. Any request socat receives on the specified source interface/port is redirected to the destination IP/port. There is no filtering or conditional redirecting. Apache mod_rewrite, on the other hand, provides a number of methods to strengthen your phishing and increase the resilience of your testing infrastructure. mod_rewrite has the ability to perform conditional redirection based on request attributes, such as URI, user agent, query string, operating system, and IP. Apache mod_rewrite uses htaccess files to configure rulesets for how Apache should handle each incoming request. Using these rules, you could, for instance, redirect requests to your server with the default wget user agent to a legitimate page on your target's website.
@@ -425,12 +431,12 @@ For more information about hunting frontable domains, check out:
 * [FindFrontableDomains tool - Steve Borosh (@rvrsh3ll)](https://github.com/rvrsh3ll/FindFrontableDomains)
 
 ### Further Resources on Domain Fronting
-* [Simplifying Domain Fronting (@malcomvetter)](https://medium.com/@malcomvetter/simplifying-domain-fronting-8d23dcb694a0)
+* [Simplifying Domain Fronting - Tim Malcomvetter (@malcomvetter)](https://medium.com/@malcomvetter/simplifying-domain-fronting-8d23dcb694a0)
 * [High-reputation Redirectors and Domain Fronting - Raphael Mudge](https://blog.cobaltstrike.com/2017/02/06/high-reputation-redirectors-and-domain-fronting/)
-* [Empire Domain Fronting Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
+* [Empire Domain Fronting - Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
 * [Escape and Evasion Egressing Restricted Networks - Tom Steele (@_tomsteele) and Chris Patten](https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks)
 * [Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike](https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/) - [Will Vandevanter and Shay Nahari of CyberArk](https://www.cyberark.com)
-* [SSL Domain Fronting 101 (@424f424f)](http://www.rvrsh3ll.net/blog/offensive/ssl-domain-fronting-101/)
+* [SSL Domain Fronting 101 - Steve Borosh (@424f424f)](http://www.rvrsh3ll.net/blog/offensive/ssl-domain-fronting-101/)
 
 ## PaaS Redirectors
 Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
@@ -491,7 +497,7 @@ Of course, this list is not exhaustive of what you can do to secure a team serve
 
 * **Don't go overboard** - It's easy to get excited about advanced techniques and want to throw the kitchen sink at a target. If you are emulating a specific adversarial threat, only leverage techniques the real threat actor used or techniques within the skillset of the threat actor. If your red team testing will attack the same target long-term, consider starting "easy" and working through the more advanced tradecraft as your assessments go on. Evolving the red team's technique alongside the blue team's will consistenly push the organization forward, whereas hitting the blue team with everything at once may overwhelm the blue team and slow the learning process.
 
-* **Monitor logs** - All logs should be monitored throughout the engagement: SMTP logs, Apache logs, tcpdump on socat redirectors, iptables logs (specific to traffic forwarding or targeted filtering), weblogs, Cobalt Strike/Empire/MSF logs. Forward logs to a central location, such as with rsyslog, for easier monitoring. Operator terminal data retention may come in handy for going over an historical command usaeage during an operation. @Killswitch_GUI created an easy-to-use program named lTerm that will log all bash terminal commands to a central location. [Log all terminal output with lTerm](https://github.com/killswitch-GUI/lterm)
+* **Monitor logs** - All logs should be monitored throughout the engagement: SMTP logs, Apache logs, tcpdump on socat redirectors, iptables logs (specific to traffic forwarding or targeted filtering), weblogs, Cobalt Strike/Empire/MSF logs. Forward logs to a central location, such as with [rsyslog](https://bluescreenofjeff.com/2017-08-08-attack-infrastructure-log-aggregation-and-monitoring/), for easier monitoring. Operator terminal data retention may come in handy for going over an historical command useage during an operation. @Killswitch_GUI created an easy-to-use program named lTerm that will log all bash terminal commands to a central location. [Log all terminal output with lTerm](https://github.com/killswitch-GUI/lterm)
 
 * **Implement high-value event alerting** - Configure the attack infrastructure to generate alerts for high-value events, such as new C2 sessions or credential capture hits. One popular way of implementing alerting is via a chat platform's API, such as Slack. Check out the following posts about Slack alerting: [Slack Shell Bot - Russel Van Tuyl (@Ne0nd0g)](https://www.swordshield.com/2016/11/slackshellbot/), [Slack Notifications for Cobalt Strike - Andrew Chiles (@AndrewChiles)](http://threatexpress.com/2016/12/slack-notifications-for-cobalt-strike/), [Slack Bots for Trolls and Work - Jeff Dimmock (@bluscreenfojeff)](http://bluescreenofjeff.com/2017-04-11-slack-bots-for-trolls-and-work/)
 
