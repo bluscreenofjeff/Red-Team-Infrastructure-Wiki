@@ -41,8 +41,10 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
   - [Domain Fronting](#domain-fronting)
     - [Further Resources on Domain Fronting](#further-resources-on-domain-fronting)
   - [PaaS Redirectors](#paas-redirectors)
-- [Obscuring Infrastructure](#obscuring-infrastructure)  
+  - [Other Third-Party C2](#other-third-party-c2)
+- [Obscuring Infrastructure](#obscuring-infrastructure)
 - [Securing Infrastructure](#securing-infrastructure)
+- [Automating Deployments](#automating-deployments)
 - [General Tips](#general-tips)
 - [Thanks to Contributors](#thanks-to-contributors)
 
@@ -447,6 +449,12 @@ Specific implementation can vary greatly based on the service; however, for an e
 
 Another interesting technique that merits further research is the use of overly-permissive Amazon S3 buckets for C2. Check out the post [S3 Buckets for Good and Evil](https://pentestarmoury.com/2017/07/19/s3-buckets-for-good-and-evil/) by [Andrew Luke (@Sw4mp_f0x)](https://twitter.com/Sw4mp_f0x) for more details on how S3 buckets could be used for C2. This technique could be combined with the third-party C2 capabilities of Empire to use the target's legitimate S3 buckets against them.
 
+## Other Third-Party C2
+Other third-party services have been used in the wild for C2 in the past. Leveraging third-party websites that allow for the rapid posting or modification of user-generated content can help you evade reputation-based controls, especially if the third-party site is generally trusted.
+
+Check out these resources for other third-party C2 options:
+* [A stealthy Python based Windows backdoor that uses Github as a C&C server](http://securityblog.gr/4434/a-stealthy-python-based-windows-backdoor-that-uses-github-as-a-cc-server/) - [maldevel at securityblog.gr](http://securityblog.gr/author/gkarpouzas/)
+
 # Obscuring Infrastructure
 
 Attack infrastructure is often easy to identify, appearing like a shell of a legitimate server. We will need to take additional steps with our infrastructure to increase the likelihood of blending in with real servers amongst either the target organization or services the target may conceivably use.
@@ -489,6 +497,12 @@ Of course, this list is not exhaustive of what you can do to secure a team serve
 * [20 Linux Server Hardening Security Tips - nixCraft](https://www.cyberciti.biz/tips/linux-security.html)
 * [SANS Linux Security Checklists](https://www.sans.org/score/checklists/linux)
 
+# Automating Deployments
+The topics covered in this wiki strengthen attack infrastrctures, but generally require a good deal of time to design and implement. Automation can be used to greatly reduce deployment times, allowing you to deploy more complex setups in less time.
+
+Check out these resources about attack infrastructure automation:
+* [Automated Red Team Infrastructure Deployment with Terraform - Part 1](https://rastamouse.me/2017/08/automated-red-team-infrastructure-deployment-with-terraform---part-1/) - [@_RastaMouse](https://twitter.com/_RastaMouse)
+* [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) - [Julian Catrambone (@n0pe_sled)](https://twitter.com/n0pe_sled)
 
 # General Tips
 * **Document everything** - Running a complex Red Team infrastructure means many moving parts. Be sure to document each asset’s function and where its traffic is sent.
@@ -517,6 +531,7 @@ A BIG THANK YOU to all the following people (listed alphabetically) who contribu
 * [@killswitch_gui - Alex Rymdeko-Harvey](https://twitter.com/killswitch_gui)
 * [@ne0nd0g - Russel Van Tuyl](https://twitter.com/ne0nd0g)
 * [@n0pe_sled - Julian Catrambone](https://twitter.com/n0pe_sled)
+* [@_RastaMouse](https://twitter.com/_RastaMouse)
 * [@tifkin_ - Lee Christensen](https://twitter.com/tifkin_)
 * [@vysecurity - Vincent Yiu](https://twitter.com/vysecurity)
 * [@xorrior - Chris Ross](https://twitter.com/xorrior)
