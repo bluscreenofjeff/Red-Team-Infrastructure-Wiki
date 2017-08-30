@@ -91,6 +91,8 @@ Here is a sample design, keeping functional segregation and redirector usage in 
 
 * [How to Build a C2 Infrastructure with Digital Ocean – Part 1 - Lee Kagan (@invokethreatguy)](https://www.blackhillsinfosec.com/build-c2-infrastructure-digital-ocean-part-1/)
 
+* [Automated Red Team Infrastructure Deployment with Terraform - Part 1 - Rasta Mouse (@_RastaMouse)](https://rastamouse.me/2017/08/automated-red-team-infrastructure-deployment-with-terraform---part-1/)
+
 # Domains
 Domain reputation will vary greatly depending on the products your target is using, as well as their configuration. As such, choosing a domain that will work on your target is not an exact science. Open source intelligence gathering (OSINT) will be critical in helping make a best guess at the state of controls and which resources to check domains against. Luckily, online advertisers face the same problems and have created some solutions we can leverage.
 
