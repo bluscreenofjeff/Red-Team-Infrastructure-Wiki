@@ -347,10 +347,11 @@ Apache Mod_Rewrite usage and examples by Jeff Dimmock:
 * [Apache mod_rewrite Grab Bag](https://bluescreenofjeff.com/2016-12-23-apache_mod_rewrite_grab_bag/)
 * [Serving Random Payloads with Apache mod_rewrite](https://bluescreenofjeff.com/2017-06-13-serving-random-payloads-with-apache-mod_rewrite/)
 
+Other Apache mod_rewrite usage and examples:
+
 * [mod_rewrite rule to evade vendor sandboxes from Jason Lang @curi0usjack](https://gist.github.com/curi0usJack/971385e8334e189d93a6cb4671238b10) 
 
-Serving random payloads with NGINX:
-[Gist by jivoi](https://gist.github.com/jivoi/a33ace2e25515a31aa2ffbae246d98c9)
+* [Serving random payloads with NGINX - Gist by jivoi](https://gist.github.com/jivoi/a33ace2e25515a31aa2ffbae246d98c9)
 
 To automatically set up Apache Mod_Rewrite on a redirector server, check out Julain Catrambone's ([@n0pe_sled](https://twitter.com/n0pe_sled)) blog post [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) and the [accompanying tool](https://github.com/n0pe-sled/Apache2-Mod-Rewrite-Setup).
 
