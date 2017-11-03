@@ -360,6 +360,7 @@ To automatically set up Apache Mod_Rewrite on a redirector server, check out Jul
 The intention behind redirecting C2 traffic is twofold: obscure the backend team server and appear to be a legitimate website if browsed to by an incident responder. Through the use of Apache mod_rewrite and [customized C2 profiles](#modifying-c2-traffic) or other proxying (such as with Flask), we can reliably filter the real C2 traffic from investigative traffic.
 
 * [Cobalt Strike HTTP C2 Redirectors with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-06-28-cobalt-strike-http-c2-redirectors-with-apache-mod_rewrite/)
+* [Securing your Empire C2 with Apache mod_rewrite - Gabriel Mathenge (@_theVIVI)](https://thevivi.net/2017/11/03/securing-your-empire-c2-with-apache-mod_rewrite/)
 * [Expand Your Horizon Red Team – Modern SAAS C2 - Alex Rymdeko-Harvey (@killswitch-gui)](https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/)
 
 #### C2 Redirection with HTTPS
