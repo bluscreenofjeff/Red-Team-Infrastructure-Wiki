@@ -27,7 +27,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
     - [socat for DNS](#socat-for-dns)
     - [iptables for DNS](#iptables-for-dns)
   - [HTTP(S)](#https)
-    - [socat vs mod_rewrite](#socat-vs-modrewrite)
+    - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
     - [socat for HTTP](#socat-for-http)
     - [iptables for HTTP](#iptables-for-http)
     - [Payloads and Web Redirection](#payloads-and-web-redirection)
@@ -512,6 +512,7 @@ The topics covered in this wiki strengthen attack infrastrctures, but generally 
 Check out these resources about attack infrastructure automation:
 * [Automated Red Team Infrastructure Deployment with Terraform - Part 1](https://rastamouse.me/2017/08/automated-red-team-infrastructure-deployment-with-terraform---part-1/) - [@_RastaMouse](https://twitter.com/_RastaMouse)
 * [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) - [Julian Catrambone (@n0pe_sled)](https://twitter.com/n0pe_sled)
+* [Automated Empire Infrastructure](https://bneg.io/2017/11/06/automated-empire-infrastructure/) - [Jeremy Johnson (@beyondnegative)](https://twitter.com/beyondnegative)
 
 # General Tips
 * **Document everything** - Running a complex Red Team infrastructure means many moving parts. Be sure to document each asset’s function and where its traffic is sent.
