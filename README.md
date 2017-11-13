@@ -513,6 +513,7 @@ Check out these resources about attack infrastructure automation:
 * [Automated Red Team Infrastructure Deployment with Terraform - Part 1](https://rastamouse.me/2017/08/automated-red-team-infrastructure-deployment-with-terraform---part-1/) - [@_RastaMouse](https://twitter.com/_RastaMouse)
 * [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) - [Julian Catrambone (@n0pe_sled)](https://twitter.com/n0pe_sled)
 * [Automated Empire Infrastructure](https://bneg.io/2017/11/06/automated-empire-infrastructure/) - [Jeremy Johnson (@beyondnegative)](https://twitter.com/beyondnegative)
+* [RTOps: Automating Redirector Deployment With Ansible](http://threat.tevora.com/automating-redirector-deployment-with-ansible/) - [Kevin Dick](http://threat.tevora.com/author/e0x70i/)
 
 # General Tips
 * **Document everything** - Running a complex Red Team infrastructure means many moving parts. Be sure to document each asset’s function and where its traffic is sent.
