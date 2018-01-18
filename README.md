@@ -464,6 +464,8 @@ Check out these resources for other third-party C2 options:
 * [Cobalt Strike over external C2 – beacon home in the most obscure ways](https://outflank.nl/blog/2017/09/17/blogpost-cobalt-strike-over-external-c2-beacon-home-in-the-most-obscure-ways/) - [Mark Bergman at outflank.nl](https://outflank.nl/blog/author/mark/)
 * [“Tasking” Office 365 for Cobalt Strike C2](https://labs.mwrinfosecurity.com/blog/tasking-office-365-for-cobalt-strike-c2) - [William Knowles (@william_knows)](https://twitter.com/william_knows)
 * [External C2 for Cobalt Strike](https://github.com/ryhanson/ExternalC2/) - [Ryan Hanson (@ryhanson)](https://twitter.com/ryhanson)
+* [External C2 framework for Cobalt Strike](http://www.insomniacsecurity.com/2018/01/11/externalc2.html) - [Jonathan Echavarria (@Und3rf10w)](https://twitter.com/und3rf10w)
+* [External C2 framework (GitHub Repo)](https://github.com/Und3rf10w/external_c2_framework) - [Jonathan Echavarria (@Und3rf10w)](https://twitter.com/und3rf10w)
 
 # Obscuring Infrastructure
 
@@ -507,6 +509,7 @@ Of course, this list is not exhaustive of what you can do to secure a team serve
 * [Securing Debian Manual](https://www.debian.org/doc/manuals/securing-debian-howto/)
 * [20 Linux Server Hardening Security Tips - nixCraft](https://www.cyberciti.biz/tips/linux-security.html)
 * [SANS Linux Security Checklists](https://www.sans.org/score/checklists/linux)
+* [Docker Your Command & Control (C2)](https://blog.obscuritylabs.com/docker-command-controll-c2/) - [Alex Rymdeko-Harvey (@killswitch_gui)](https://twitter.com/killswitch_gui)
 
 # Automating Deployments
 The topics covered in this wiki strengthen attack infrastrctures, but generally require a good deal of time to design and implement. Automation can be used to greatly reduce deployment times, allowing you to deploy more complex setups in less time.
@@ -546,5 +549,6 @@ A BIG THANK YOU to all the following people (listed alphabetically) who contribu
 * [@n0pe_sled - Julian Catrambone](https://twitter.com/n0pe_sled)
 * [@_RastaMouse](https://twitter.com/_RastaMouse)
 * [@tifkin_ - Lee Christensen](https://twitter.com/tifkin_)
+* [@Und3rf10w - Jonathan Echavarria](https://twitter.com/und3rf10w)
 * [@vysecurity - Vincent Yiu](https://twitter.com/vysecurity)
 * [@xorrior - Chris Ross](https://twitter.com/xorrior)
