@@ -521,6 +521,7 @@ Check out these resources about attack infrastructure automation:
 * [RTOps: Automating Redirector Deployment With Ansible](http://threat.tevora.com/automating-redirector-deployment-with-ansible/) - [Kevin Dick](http://threat.tevora.com/author/e0x70i/)
 * [Automating Gophish Releases With Ansible and Docker](https://jordan-wright.com/blog/post/2018-02-04-automating-gophish-releases/) - [Jordan Wright (@jw_sec)](https://twitter.com/jw_sec)
 * [Red Baron GitHub Repo](https://github.com/Coalfire-Research/Red-Baron) - [Marcello (@byt3bl33d3r)](https://twitter.com/byt3bl33d3r)
+* [Automating Apache mod_rewrite and Cobalt Strike Malleable C2 for Intelligent Redirection](http://threatexpress.com/2018/02/automating-cobalt-strike-profiles-apache-mod_rewrite-htaccess-files-intelligent-c2-redirection/) - [Joe Vest (@joevest)](https://twitter.com/joevest)
 
 # General Tips
 * **Document everything** - Running a complex Red Team infrastructure means many moving parts. Be sure to document each asset’s function and where its traffic is sent.
