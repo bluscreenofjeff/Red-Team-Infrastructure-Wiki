@@ -519,6 +519,8 @@ Check out these resources about attack infrastructure automation:
 * [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) - [Julian Catrambone (@n0pe_sled)](https://twitter.com/n0pe_sled)
 * [Automated Empire Infrastructure](https://bneg.io/2017/11/06/automated-empire-infrastructure/) - [Jeremy Johnson (@beyondnegative)](https://twitter.com/beyondnegative)
 * [RTOps: Automating Redirector Deployment With Ansible](http://threat.tevora.com/automating-redirector-deployment-with-ansible/) - [Kevin Dick](http://threat.tevora.com/author/e0x70i/)
+* [Automating Gophish Releases With Ansible and Docker](https://jordan-wright.com/blog/post/2018-02-04-automating-gophish-releases/) - [Jordan Wright (@jw_sec)](https://twitter.com/jw_sec)
+* [Red Baron GitHub Repo](https://github.com/Coalfire-Research/Red-Baron) - [Marcello (@byt3bl33d3r)](https://twitter.com/byt3bl33d3r)
 
 # General Tips
 * **Document everything** - Running a complex Red Team infrastructure means many moving parts. Be sure to document each asset’s function and where its traffic is sent.
