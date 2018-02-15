@@ -287,7 +287,7 @@ sysctl net.ipv4.ip_forward=1
 Also, change "FORWARD" chain policy to "ACCEPT"
 
 ### DNS redirection can also be done behind NAT
-Some may have the requirement or need to host a c2 server on an internal network. Using a combination of IPTABLES, SOCAT, and reverse ssh tunnels, we can certainly acheive this in the following manner.
+Some may have the requirement or need to host a c2 server on an internal network. Using a combination of IPTABLES, SOCAT, and reverse ssh tunnels, we can certainly achieve this in the following manner.
 
 ![Sample DNS NAT Setup](./images/dns_nat.png)
 
