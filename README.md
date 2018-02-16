@@ -466,6 +466,8 @@ Check out these resources for other third-party C2 options:
 * [External C2 for Cobalt Strike](https://github.com/ryhanson/ExternalC2/) - [Ryan Hanson (@ryhanson)](https://twitter.com/ryhanson)
 * [External C2 framework for Cobalt Strike](http://www.insomniacsecurity.com/2018/01/11/externalc2.html) - [Jonathan Echavarria (@Und3rf10w)](https://twitter.com/und3rf10w)
 * [External C2 framework (GitHub Repo)](https://github.com/Und3rf10w/external_c2_framework) - [Jonathan Echavarria (@Und3rf10w)](https://twitter.com/und3rf10w)
+* [Hiding in the Cloud:
+Cobalt Strike Beacon C2 using Amazon APIs](https://rhinosecuritylabs.com/aws/hiding-cloudcobalt-strike-beacon-c2-using-amazon-apis/) - [Rhino Security Labs](https://rhinosecuritylabs.com)
 
 # Obscuring Infrastructure
 
