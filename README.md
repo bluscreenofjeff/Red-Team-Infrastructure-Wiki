@@ -1,4 +1,4 @@
-This wiki is intended to provide a resources for setting up a resilient Red Team infrastructure. It was made to complement Steve Borosh ([@424f424f](https://twitter.com/424f424f)) and Jeff Dimmock's ([@bluscreenofjeff](https://twitter.com/bluscreenofjeff)) BSides NoVa 2017 talk "Doomsday Preppers: Fortifying Your Red Team Infrastructure" ([slides](https://speakerdeck.com/rvrsh3ll/doomsday-preppers-fortifying-your-red-team-infrastructure))
+This wiki is intended to provide a resource for setting up a resilient Red Team infrastructure. It was made to complement Steve Borosh ([@424f424f](https://twitter.com/424f424f)) and Jeff Dimmock's ([@bluscreenofjeff](https://twitter.com/bluscreenofjeff)) BSides NoVa 2017 talk "Doomsday Preppers: Fortifying Your Red Team Infrastructure" ([slides](https://speakerdeck.com/rvrsh3ll/doomsday-preppers-fortifying-your-red-team-infrastructure))
 
 If you have an addition you'd like to make, please submit a Pull Request or file an issue on the repo.
 
@@ -27,7 +27,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
     - [socat for DNS](#socat-for-dns)
     - [iptables for DNS](#iptables-for-dns)
   - [HTTP(S)](#https)
-    - [socat vs mod_rewrite](#socat-vs-modrewrite)
+    - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
     - [socat for HTTP](#socat-for-http)
     - [iptables for HTTP](#iptables-for-http)
     - [Payloads and Web Redirection](#payloads-and-web-redirection)
@@ -287,7 +287,7 @@ sysctl net.ipv4.ip_forward=1
 Also, change "FORWARD" chain policy to "ACCEPT"
 
 ### DNS redirection can also be done behind NAT
-Some may have the requirement or need to host a c2 server on an internal network. Using a combination of IPTABLES, SOCAT, and reverse ssh tunnels, we can certainly acheive this in the following manner.
+Some may have the requirement or need to host a c2 server on an internal network. Using a combination of IPTABLES, SOCAT, and reverse ssh tunnels, we can certainly achieve this in the following manner.
 
 ![Sample DNS NAT Setup](./images/dns_nat.png)
 
@@ -347,10 +347,11 @@ Apache Mod_Rewrite usage and examples by Jeff Dimmock:
 * [Apache mod_rewrite Grab Bag](https://bluescreenofjeff.com/2016-12-23-apache_mod_rewrite_grab_bag/)
 * [Serving Random Payloads with Apache mod_rewrite](https://bluescreenofjeff.com/2017-06-13-serving-random-payloads-with-apache-mod_rewrite/)
 
+Other Apache mod_rewrite usage and examples:
+
 * [mod_rewrite rule to evade vendor sandboxes from Jason Lang @curi0usjack](https://gist.github.com/curi0usJack/971385e8334e189d93a6cb4671238b10) 
 
-Serving random payloads with NGINX:
-[Gist by jivoi](https://gist.github.com/jivoi/a33ace2e25515a31aa2ffbae246d98c9)
+* [Serving random payloads with NGINX - Gist by jivoi](https://gist.github.com/jivoi/a33ace2e25515a31aa2ffbae246d98c9)
 
 To automatically set up Apache Mod_Rewrite on a redirector server, check out Julain Catrambone's ([@n0pe_sled](https://twitter.com/n0pe_sled)) blog post [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) and the [accompanying tool](https://github.com/n0pe-sled/Apache2-Mod-Rewrite-Setup).
 
@@ -359,6 +360,7 @@ To automatically set up Apache Mod_Rewrite on a redirector server, check out Jul
 The intention behind redirecting C2 traffic is twofold: obscure the backend team server and appear to be a legitimate website if browsed to by an incident responder. Through the use of Apache mod_rewrite and [customized C2 profiles](#modifying-c2-traffic) or other proxying (such as with Flask), we can reliably filter the real C2 traffic from investigative traffic.
 
 * [Cobalt Strike HTTP C2 Redirectors with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-06-28-cobalt-strike-http-c2-redirectors-with-apache-mod_rewrite/)
+* [Securing your Empire C2 with Apache mod_rewrite - Gabriel Mathenge (@_theVIVI)](https://thevivi.net/2017/11/03/securing-your-empire-c2-with-apache-mod_rewrite/)
 * [Expand Your Horizon Red Team – Modern SAAS C2 - Alex Rymdeko-Harvey (@killswitch-gui)](https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/)
 
 #### C2 Redirection with HTTPS
@@ -461,6 +463,11 @@ Check out these resources for other third-party C2 options:
 * [External C2 (Third-Party Command and Control) - Cobalt Strike Documentation](https://www.cobaltstrike.com/help-externalc2)
 * [Cobalt Strike over external C2 – beacon home in the most obscure ways](https://outflank.nl/blog/2017/09/17/blogpost-cobalt-strike-over-external-c2-beacon-home-in-the-most-obscure-ways/) - [Mark Bergman at outflank.nl](https://outflank.nl/blog/author/mark/)
 * [“Tasking” Office 365 for Cobalt Strike C2](https://labs.mwrinfosecurity.com/blog/tasking-office-365-for-cobalt-strike-c2) - [William Knowles (@william_knows)](https://twitter.com/william_knows)
+* [External C2 for Cobalt Strike](https://github.com/ryhanson/ExternalC2/) - [Ryan Hanson (@ryhanson)](https://twitter.com/ryhanson)
+* [External C2 framework for Cobalt Strike](http://www.insomniacsecurity.com/2018/01/11/externalc2.html) - [Jonathan Echavarria (@Und3rf10w)](https://twitter.com/und3rf10w)
+* [External C2 framework (GitHub Repo)](https://github.com/Und3rf10w/external_c2_framework) - [Jonathan Echavarria (@Und3rf10w)](https://twitter.com/und3rf10w)
+* [Hiding in the Cloud:
+Cobalt Strike Beacon C2 using Amazon APIs](https://rhinosecuritylabs.com/aws/hiding-cloudcobalt-strike-beacon-c2-using-amazon-apis/) - [Rhino Security Labs](https://rhinosecuritylabs.com)
 
 # Obscuring Infrastructure
 
@@ -476,6 +483,7 @@ For more details about how to do these and other tactics for multiple attack fra
 * [Empire – Modifying Server C2 Indicators](http://threatexpress.com/2017/05/empire-modifying-server-c2-indicators/) - [Andrew Chiles](https://twitter.com/andrewchiles)
 * [Hunting Red Team Empire C2 Infrastructure](http://www.chokepoint.net/2017/04/hunting-red-team-empire-c2.html) - [chokepoint.net](http://www.chokepoint.net/)
 * [Hunting Red Team Meterpreter C2 Infrastructure](http://www.chokepoint.net/2017/04/hunting-red-team-meterpreter-c2.html) - [chokepoint.net](http://www.chokepoint.net/)
+* [Identifying Empire HTTP Listeners (Tenable Blog)](https://www.tenable.com/blog/identifying-empire-http-listeners) - [Jacob Baines](https://www.tenable.com/profile/jacob-baines)
 
 
 # Securing Infrastructure
@@ -503,13 +511,20 @@ Of course, this list is not exhaustive of what you can do to secure a team serve
 * [Securing Debian Manual](https://www.debian.org/doc/manuals/securing-debian-howto/)
 * [20 Linux Server Hardening Security Tips - nixCraft](https://www.cyberciti.biz/tips/linux-security.html)
 * [SANS Linux Security Checklists](https://www.sans.org/score/checklists/linux)
+* [Docker Your Command & Control (C2)](https://blog.obscuritylabs.com/docker-command-controll-c2/) - [Alex Rymdeko-Harvey (@killswitch_gui)](https://twitter.com/killswitch_gui)
 
 # Automating Deployments
 The topics covered in this wiki strengthen attack infrastrctures, but generally require a good deal of time to design and implement. Automation can be used to greatly reduce deployment times, allowing you to deploy more complex setups in less time.
 
 Check out these resources about attack infrastructure automation:
 * [Automated Red Team Infrastructure Deployment with Terraform - Part 1](https://rastamouse.me/2017/08/automated-red-team-infrastructure-deployment-with-terraform---part-1/) - [@_RastaMouse](https://twitter.com/_RastaMouse)
+* [Automated Red Team Infrastructure Deployment with Terraform - Part 2](https://rastamouse.me/2017/09/automated-red-team-infrastructure-deployment-with-terraform---part-2/) - [@_RastaMouse](https://twitter.com/_RastaMouse)
 * [Mod_Rewrite Automatic Setup](https://blog.inspired-sec.com/archive/2017/04/17/Mod-Rewrite-Automatic-Setup.html) - [Julian Catrambone (@n0pe_sled)](https://twitter.com/n0pe_sled)
+* [Automated Empire Infrastructure](https://bneg.io/2017/11/06/automated-empire-infrastructure/) - [Jeremy Johnson (@beyondnegative)](https://twitter.com/beyondnegative)
+* [RTOps: Automating Redirector Deployment With Ansible](http://threat.tevora.com/automating-redirector-deployment-with-ansible/) - [Kevin Dick](http://threat.tevora.com/author/e0x70i/)
+* [Automating Gophish Releases With Ansible and Docker](https://jordan-wright.com/blog/post/2018-02-04-automating-gophish-releases/) - [Jordan Wright (@jw_sec)](https://twitter.com/jw_sec)
+* [Red Baron GitHub Repo](https://github.com/Coalfire-Research/Red-Baron) - [Marcello (@byt3bl33d3r)](https://twitter.com/byt3bl33d3r)
+* [Automating Apache mod_rewrite and Cobalt Strike Malleable C2 for Intelligent Redirection](http://threatexpress.com/2018/02/automating-cobalt-strike-profiles-apache-mod_rewrite-htaccess-files-intelligent-c2-redirection/) - [Joe Vest (@joevest)](https://twitter.com/joevest)
 
 # General Tips
 * **Document everything** - Running a complex Red Team infrastructure means many moving parts. Be sure to document each asset’s function and where its traffic is sent.
@@ -540,5 +555,6 @@ A BIG THANK YOU to all the following people (listed alphabetically) who contribu
 * [@n0pe_sled - Julian Catrambone](https://twitter.com/n0pe_sled)
 * [@_RastaMouse](https://twitter.com/_RastaMouse)
 * [@tifkin_ - Lee Christensen](https://twitter.com/tifkin_)
+* [@Und3rf10w - Jonathan Echavarria](https://twitter.com/und3rf10w)
 * [@vysecurity - Vincent Yiu](https://twitter.com/vysecurity)
 * [@xorrior - Chris Ross](https://twitter.com/xorrior)
