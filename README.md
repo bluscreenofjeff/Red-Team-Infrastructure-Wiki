@@ -30,6 +30,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
     - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
     - [socat for HTTP](#socat-for-http)
     - [iptables for HTTP](#iptables-for-http)
+    - [ssh for HTTP](#ssh-for-http)
     - [Payloads and Web Redirection](#payloads-and-web-redirection)
     - [C2 Redirection](#c2-redirection)
       - [C2 Redirection with HTTPS](#c2-redirection-with-https)
