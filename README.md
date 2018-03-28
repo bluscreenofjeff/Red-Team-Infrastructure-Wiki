@@ -331,7 +331,7 @@ sysctl net.ipv4.ip_forward=1
 
 ### SSH for HTTP
 
-We have previously covered using SSH for DNS tunnels. SSH works as a solid, and robust means to break through NAT and obtain a way for the implant to connect to a redirector annd into your server environment. First you must set up GatewayPorts forwarding or it won't work, using the following syntax on the redirector:
+We have previously covered using SSH for DNS tunnels. SSH works as a solid, and robust means to break through NAT and obtain a way for the implant to connect to a redirector and into your server environment. First you must set up GatewayPorts forwarding or it won't work, using the following syntax on the redirector:
 
 ```nano /etc/ssh/sshd_config``` add ```GatewayPorts yes```
 
