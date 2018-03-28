@@ -30,6 +30,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
     - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
     - [socat for HTTP](#socat-for-http)
     - [iptables for HTTP](#iptables-for-http)
+    - [ssh for HTTP](#ssh-for-http)
     - [Payloads and Web Redirection](#payloads-and-web-redirection)
     - [C2 Redirection](#c2-redirection)
       - [C2 Redirection with HTTPS](#c2-redirection-with-https)
@@ -327,6 +328,29 @@ iptables -I FORWARD -j ACCEPT
 iptables -P FORWARD ACCEPT
 sysctl net.ipv4.ip_forward=1
 ```
+
+### SSH for HTTP
+
+We have previously covered using SSH for DNS tunnels. SSH works as a solid, and robust means to break through NAT and obtain a way for the implant to connect to a redirector annd into your server environment. First you must set up GatewayPorts forwarding or it won't work, using the following syntax on the redirector:
+
+```nano /etc/ssh/sshd_config``` add ```GatewayPorts yes```
+
+To forward the redirector's local port 80 to your internal teamsrver, use the following syntax on the internal server:
+
+```
+tmux new -S redir80
+ssh <redirector> -R *:80:localhost:80
+Ctrl+B, D
+```
+
+You can also forward more than one port, for example if you want 443 and 80 to be open all at once:
+
+```
+tmux new -S redir80443
+ssh <redirector> -R *:80:localhost:80 -R *:443:localhost:443
+Ctrl+B, D
+```
+
 
 ### Payloads and Web Redirection
 
