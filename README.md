@@ -145,6 +145,8 @@ Now, you're going to install the web front-end to phish from in just a few easy 
 
 You'll want to make sure you have all the proper DNS records ponting to your mail server. (https://docs.iredmail.org/setup.dns.html). For DKIM, the new command should be "amavisd-new showkeys" to list your DKIM key.
 
+For DMARC we can use (https://www.unlocktheinbox.com/dmarcwizard/) to generate our dmarc entry.
+
 ![iRedMail Dashboard](./images/iredadmin_dashboard.PNG)
 
 Now, create a user to phish with.
