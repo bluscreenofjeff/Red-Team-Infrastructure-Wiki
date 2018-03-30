@@ -382,6 +382,7 @@ The intention behind redirecting C2 traffic is twofold: obscure the backend team
 * [Cobalt Strike HTTP C2 Redirectors with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-06-28-cobalt-strike-http-c2-redirectors-with-apache-mod_rewrite/)
 * [Securing your Empire C2 with Apache mod_rewrite - Gabriel Mathenge (@_theVIVI)](https://thevivi.net/2017/11/03/securing-your-empire-c2-with-apache-mod_rewrite/)
 * [Expand Your Horizon Red Team – Modern SAAS C2 - Alex Rymdeko-Harvey (@killswitch-gui)](https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/)
+* [Hybrid Cobalt Strike Redirectors](https://zachgrace.com/2018/02/20/cobalt_strike_redirectors.html) - [Zach Grace (@ztgrace)](https://twitter.com/ztgrace) and [@m0ther_](https://twitter.com/m0ther_)
 
 #### C2 Redirection with HTTPS
 
@@ -454,7 +455,7 @@ For more detailed information about how Domain Fronting works, see the whitepape
 In addition to the standard frontable domains, such as any google.com domain, it's possible to leverage other legitimate domains for fronting. 
 
 For more information about hunting frontable domains, check out:
-* [Domain Fronting via Cloudfront Alternate Domains - Vincenty Yiu (@vysecurity)](https://www.mdsec.co.uk/2017/02/domain-fronting-via-cloudfront-alternate-domains/)
+* [Domain Fronting via Cloudfront Alternate Domains - Vincent Yiu (@vysecurity)](https://www.mdsec.co.uk/2017/02/domain-fronting-via-cloudfront-alternate-domains/)
 * [Finding Domain frontable Azure domains - thoth / Fionnbharr (@a_profligate)](https://theobsidiantower.com/2017/07/24/d0a7cfceedc42bdf3a36f2926bd52863ef28befc.html)
 * [Google Groups: Blog post on finding 2000+ Azure domains using Censys](https://groups.google.com/forum/#!topic/traffic-obf/7ygIXCPebwQ)
 * [FindFrontableDomains tool - Steve Borosh (@rvrsh3ll)](https://github.com/rvrsh3ll/FindFrontableDomains)
@@ -466,6 +467,9 @@ For more information about hunting frontable domains, check out:
 * [Escape and Evasion Egressing Restricted Networks - Tom Steele (@_tomsteele) and Chris Patten](https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks)
 * [Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike](https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/) - [Will Vandevanter and Shay Nahari of CyberArk](https://www.cyberark.com)
 * [SSL Domain Fronting 101 - Steve Borosh (@424f424f)](http://www.rvrsh3ll.net/blog/offensive/ssl-domain-fronting-101/)
+* [How I Identified 93k Domain-Frontable CloudFront Domains - Chris Myers (@SWIZZLEZ_) and Barrett Adams (@PEEWPW)](https://www.peew.pw/blog/2018/2/22/how-i-identified-93k-domain-frontable-cloudfront-domains)
+* [Domain Fronting: Who Am I? - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/domain-fronting-who-am-i-3c982ccd52e6)
+* [Validated CloudFront SSL Domains - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/validated-cloudfront-ssl-domains-27895822cea3)
 
 ## PaaS Redirectors
 Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
@@ -489,6 +493,7 @@ Check out these resources for other third-party C2 options:
 * [External C2 framework (GitHub Repo)](https://github.com/Und3rf10w/external_c2_framework) - [Jonathan Echavarria (@Und3rf10w)](https://twitter.com/und3rf10w)
 * [Hiding in the Cloud:
 Cobalt Strike Beacon C2 using Amazon APIs](https://rhinosecuritylabs.com/aws/hiding-cloudcobalt-strike-beacon-c2-using-amazon-apis/) - [Rhino Security Labs](https://rhinosecuritylabs.com)
+* [Exploring Cobalt Strike's ExternalC2 framework](https://blog.xpnsec.com/exploring-cobalt-strikes-externalc2-framework/) - [Adam (@_xpn_)](https://twitter.com/_xpn_)
 
 # Obscuring Infrastructure
 
@@ -533,6 +538,15 @@ Of course, this list is not exhaustive of what you can do to secure a team serve
 * [20 Linux Server Hardening Security Tips - nixCraft](https://www.cyberciti.biz/tips/linux-security.html)
 * [SANS Linux Security Checklists](https://www.sans.org/score/checklists/linux)
 * [Docker Your Command & Control (C2)](https://blog.obscuritylabs.com/docker-command-controll-c2/) - [Alex Rymdeko-Harvey (@killswitch_gui)](https://twitter.com/killswitch_gui)
+
+## Specific Hardening Resources
+There are a number of resources available online discussing the secure setup and design of infrastructures. Not every design consideration will be appropriate for every attack infrastructure, but it's useful to know what options are available and what other testers are doing. 
+
+Here are some of those resoources:
+
+* [Responsible Red Teams - Tim MalcomVetter (@malcomvetter)](https://medium.com/@malcomvetter/responsible-red-teams-1c6209fd43cc)
+* [Safe Red Team Infrastructure - Tim MalcomVetter (@malcomvetter)](https://medium.com/@malcomvetter/safe-red-team-infrastructure-c5d6a0f13fac)
+* [Red Team Infrastructure - AWS Encrypted EBS - @_rastamouse](https://rastamouse.me/2018/02/red-team-infrastructure---aws-encrypted-ebs/)
 
 # Automating Deployments
 The topics covered in this wiki strengthen attack infrastrctures, but generally require a good deal of time to design and implement. Automation can be used to greatly reduce deployment times, allowing you to deploy more complex setups in less time.
