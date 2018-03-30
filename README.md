@@ -404,6 +404,7 @@ SSLProxyCheckPeerExpire off
 ```
 
 ### Other Apache mod_rewrite Resources
+* [Automating Apache mod_rewrite and Cobalt Strike Profiles](https://posts.specterops.io/automating-apache-mod-rewrite-and-cobalt-strike-malleable-c2-profiles-d45266ca642)
 * [mod-rewrite-cheatsheet.com](http://mod-rewrite-cheatsheet.com/)
 * [Official Apache 2.4 mod_rewrite Documentation](http://httpd.apache.org/docs/current/rewrite/)
 * [Apache mod_rewrite Introduction](https://httpd.apache.org/docs/2.4/en/rewrite/intro.html)
