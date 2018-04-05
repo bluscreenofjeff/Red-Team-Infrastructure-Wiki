@@ -470,6 +470,8 @@ For more information about hunting frontable domains, check out:
 * [How I Identified 93k Domain-Frontable CloudFront Domains - Chris Myers (@SWIZZLEZ_) and Barrett Adams (@PEEWPW)](https://www.peew.pw/blog/2018/2/22/how-i-identified-93k-domain-frontable-cloudfront-domains)
 * [Domain Fronting: Who Am I? - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/domain-fronting-who-am-i-3c982ccd52e6)
 * [Validated CloudFront SSL Domains - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/validated-cloudfront-ssl-domains-27895822cea3)
+* [CloudFront Hijacking](https://www.mindpointgroup.com/blog/pen-test/cloudfront-hijacking/) - [Matt Westfall (@disloops)](https://twitter.com/disloops)
+* [CloudFrunt GitHub Repo](https://github.com/MindPointGroup/cloudfrunt) - [MindPointGroup](https://github.com/MindPointGroup)
 
 ## PaaS Redirectors
 Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
