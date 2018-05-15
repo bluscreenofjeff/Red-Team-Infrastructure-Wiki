@@ -481,15 +481,8 @@ For more information about hunting frontable domains, check out:
 * [Validated CloudFront SSL Domains - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/validated-cloudfront-ssl-domains-27895822cea3)
 * [CloudFront Hijacking](https://www.mindpointgroup.com/blog/pen-test/cloudfront-hijacking/) - [Matt Westfall (@disloops)](https://twitter.com/disloops)
 * [CloudFrunt GitHub Repo](https://github.com/MindPointGroup/cloudfrunt) - [MindPointGroup](https://github.com/MindPointGroup)
-<<<<<<< Updated upstream
 * [Metasploit Domain Fronting With Microsoft Azure (@ch1gg1ns)](https://chigstuff.com/blog/metasploit-domain-fronting-with-microsoft-azure/)
-=======
-<<<<<<< HEAD
 * [Alibaba CDN Domain Fronting - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/alibaba-cdn-domain-fronting-1c0754fa0142)
-=======
-* [Metasploit Domain Fronting With Microsoft Azure (@ch1gg1ns)](https://chigstuff.com/blog/metasploit-domain-fronting-with-microsoft-azure/)
->>>>>>> origin/master
->>>>>>> Stashed changes
 
 ## PaaS Redirectors
 Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
