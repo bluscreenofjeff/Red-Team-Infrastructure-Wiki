@@ -94,6 +94,7 @@ Here is a sample design, keeping functional segregation and redirector usage in 
 
 * [Automated Red Team Infrastructure Deployment with Terraform - Part 1 - Rasta Mouse (@_RastaMouse)](https://rastamouse.me/2017/08/automated-red-team-infrastructure-deployment-with-terraform---part-1/)
 
+
 # Domains
 Perceived domain reputation will vary greatly depending on the products your target is using, as well as their configuration. As such, choosing a domain that will work on your target is not an exact science. Open source intelligence gathering (OSINT) will be critical in helping make a best guess at the state of controls and which resources to check domains against. Luckily, online advertisers face the same problems and have created some solutions we can leverage.
 
@@ -225,6 +226,7 @@ Phish-Domain *TAB* RELAY
 
 #### Configure a catch-all address
 This will relay any email received to *@phishdomain.com to a chosen email address. This is highly useful to receive any responses or bounce-backs to a phishing email.
+
 
 ```bash
 echo PHISH-DOMAIN >> /etc/mail/local-host-names
@@ -417,12 +419,15 @@ SSLProxyCheckPeerExpire off
 ## Cobalt Strike
 Cobalt Strike modifies its traffic with Malleable C2 profiles. Profiles provide highly-customizable options for modifying how your server’s C2 traffic will look on the wire. Malleable C2 profiles can be used to strengthen incident response evasion, impersonate known adversaries, or masquerade as legitimate internal applications used by the target.
 
-* [Malleable C2 Profiles - GitHub](https://github.com/rsmudge/Malleable-C2-Profiles)
+* [Official Malleable C2 Profiles - GitHub](https://github.com/rsmudge/Malleable-C2-Profiles)
 * [Malleable Command and Control Documentation - cobaltstrike.com](https://www.cobaltstrike.com/help-malleable-c2)
 * [Cobalt Strike 2.0 - Malleable Command and Control - Raphael Mudge](http://blog.cobaltstrike.com/2014/07/16/malleable-command-and-control/)
 * [Cobalt Strike 3.6 - A Path for Privilege Escalation - Raphael Mudge](http://blog.cobaltstrike.com/2016/12/08/cobalt-strike-3-6-a-path-for-privilege-escalation/)
 * [A Brave New World: Malleable C2 - Will Schroeder (@harmj0y)](http://www.harmj0y.net/blog/redteaming/a-brave-new-world-malleable-c2/)
 * [How to Write Malleable C2 Profiles for Cobalt Strike - Jeff Dimmock](https://bluescreenofjeff.com/2017-01-24-how-to-write-malleable-c2-profiles-for-cobalt-strike/)
+* [In-Memory Evasion (Video series) - Raphael Mudge](https://www.youtube.com/watch?v=lz2ARbZ_5tE&list=PL9HO6M_MU2nc5Q31qd2CwpZ8J4KFMhgnK)
+
+As you begin creating or modifying Malleable C2 profiles, it's important to keep data size limits for the Beacon info placement. For example, configuring the profile to send large amounts of data in a URL parameter will require many requests. For more information about this, check out Raphael Mudge's blog post [Beware of Slow Downloads](https://blog.cobaltstrike.com/2018/03/09/beware-of-slow-downloads/).
 
 
 ## Empire
@@ -446,9 +451,13 @@ Leveraging trusted, legitimate web services for C2 can provide a valuable leg-up
 
 ## Domain Fronting
 
-Domain Fronting is a technique used by censorship evasion services and apps to route traffic through legitimate and highly-trusted domains. Popular services that support Domain Fronting include [Google App Engine](https://cloud.google.com/appengine/), [Amazon CloudFront](https://aws.amazon.com/cloudfront/), and [Microsoft Azure](https://azure.microsoft.com/). In a nutshell, traffic uses the DNS and SNI name of the trusted service provider, Google is used in the example below. When the traffic is received by the Edge Server (ex: located at gmail.com), the packet is forwarded to the Origin Server (ex: phish.appspot.com) specified in the packet’s Host header. Depending on the service provider, the Origin Server will either directly forward traffic to a specified domain, which we’ll point to our team server, or a proxy app will be required to perform the final hop forwarding.
+Domain Fronting is a technique used by censorship evasion services and apps to route traffic through legitimate and highly-trusted domains. Popular services that support Domain Fronting include [Google App Engine](https://cloud.google.com/appengine/), [Amazon CloudFront](https://aws.amazon.com/cloudfront/), and [Microsoft Azure](https://azure.microsoft.com/). It's important to note that many providers, like [Google](https://arstechnica.com/information-technology/2018/04/google-disables-domain-fronting-capability-used-to-evade-censors/) and [Amazon](https://aws.amazon.com/blogs/security/enhanced-domain-protections-for-amazon-cloudfront-requests/) have implemented mitigations against Domain Fronting, so some linked resources or information provided in this wiki may be outdated by the time you try to use it.
+
+In a nutshell, traffic uses the DNS and SNI name of the trusted service provider, Google is used in the example below. When the traffic is received by the Edge Server (ex: located at gmail.com), the packet is forwarded to the Origin Server (ex: phish.appspot.com) specified in the packet’s Host header. Depending on the service provider, the Origin Server will either directly forward traffic to a specified domain, which we’ll point to our team server, or a proxy app will be required to perform the final hop forwarding.
 
 ![Domain Fronting Overview](./images/domain-fronting.png)
+
+
 
 For more detailed information about how Domain Fronting works, see the whitepaper [Blocking-resistant communication through domain fronting](https://www.bamsoftware.com/papers/fronting/) and the TOR Project’s [meek documentation](https://trac.torproject.org/projects/tor/wiki/doc/meek)
 
@@ -472,7 +481,15 @@ For more information about hunting frontable domains, check out:
 * [Validated CloudFront SSL Domains - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/validated-cloudfront-ssl-domains-27895822cea3)
 * [CloudFront Hijacking](https://www.mindpointgroup.com/blog/pen-test/cloudfront-hijacking/) - [Matt Westfall (@disloops)](https://twitter.com/disloops)
 * [CloudFrunt GitHub Repo](https://github.com/MindPointGroup/cloudfrunt) - [MindPointGroup](https://github.com/MindPointGroup)
+<<<<<<< Updated upstream
 * [Metasploit Domain Fronting With Microsoft Azure (@ch1gg1ns)](https://chigstuff.com/blog/metasploit-domain-fronting-with-microsoft-azure/)
+=======
+<<<<<<< HEAD
+* [Alibaba CDN Domain Fronting - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/alibaba-cdn-domain-fronting-1c0754fa0142)
+=======
+* [Metasploit Domain Fronting With Microsoft Azure (@ch1gg1ns)](https://chigstuff.com/blog/metasploit-domain-fronting-with-microsoft-azure/)
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 
 ## PaaS Redirectors
 Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
@@ -513,6 +530,7 @@ For more details about how to do these and other tactics for multiple attack fra
 * [Hunting Red Team Empire C2 Infrastructure](http://www.chokepoint.net/2017/04/hunting-red-team-empire-c2.html) - [chokepoint.net](http://www.chokepoint.net/)
 * [Hunting Red Team Meterpreter C2 Infrastructure](http://www.chokepoint.net/2017/04/hunting-red-team-meterpreter-c2.html) - [chokepoint.net](http://www.chokepoint.net/)
 * [Identifying Empire HTTP Listeners (Tenable Blog)](https://www.tenable.com/blog/identifying-empire-http-listeners) - [Jacob Baines](https://www.tenable.com/profile/jacob-baines)
+* [Host Header Manipulation - Vincent Yiu (@vysecurity)](https://vincentyiu.co.uk/host-header-manipulation/)
 
 
 # Securing Infrastructure
