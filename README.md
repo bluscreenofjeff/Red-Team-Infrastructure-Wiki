@@ -333,9 +333,15 @@ sysctl net.ipv4.ip_forward=1
 
 ### SSH for HTTP
 
-We have previously covered using SSH for DNS tunnels. SSH works as a solid, and robust means to break through NAT and obtain a way for the implant to connect to a redirector and into your server environment. First you must set up GatewayPorts forwarding or it won't work, using the following syntax on the redirector:
+We have previously covered using SSH for DNS tunnels. SSH works as a solid, and robust means to break through NAT and obtain a way for the implant to connect to a redirector and into your server environment. Before setting up an SSH redirector, you must add the following lines to `/etc/ssh/sshd_config`:
 
-```nano /etc/ssh/sshd_config``` add ```GatewayPorts yes```
+```text
+# Allow the SSH client to specify which hosts may connect
+GatewayPorts yes
+
+# Allow both local and remote port forwards
+AllowTcpForwarding yes
+```
 
 To forward the redirector's local port 80 to your internal teamsrver, use the following syntax on the internal server:
 
@@ -352,7 +358,6 @@ tmux new -S redir80443
 ssh <redirector> -R *:80:localhost:80 -R *:443:localhost:443
 Ctrl+B, D
 ```
-
 
 ### Payloads and Web Redirection
 
