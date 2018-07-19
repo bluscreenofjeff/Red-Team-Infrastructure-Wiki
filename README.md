@@ -434,6 +434,8 @@ Cobalt Strike modifies its traffic with Malleable C2 profiles. Profiles provide 
 
 As you begin creating or modifying Malleable C2 profiles, it's important to keep data size limits for the Beacon info placement. For example, configuring the profile to send large amounts of data in a URL parameter will require many requests. For more information about this, check out Raphael Mudge's blog post [Beware of Slow Downloads](https://blog.cobaltstrike.com/2018/03/09/beware-of-slow-downloads/).
 
+If you encounter issues with your Malleable C2 profile and notice the teamserver console outputting errors, refer to Raphael Mudge's blog post [Broken Promises and Malleable C2 Profiles](https://blog.cobaltstrike.com/2018/06/04/broken-promises-and-malleable-c2-profiles/) for troubleshooting tips.
+
 
 ## Empire
 Empire uses Communication Profiles, which provide customization options for the GET request URIs, user agent, and headers. The profile consists of each element, separated by the pipe character, and set with the `set DefaultProfile` option in the `listeners` context menu.
@@ -488,6 +490,7 @@ For more information about hunting frontable domains, check out:
 * [CloudFrunt GitHub Repo](https://github.com/MindPointGroup/cloudfrunt) - [MindPointGroup](https://github.com/MindPointGroup)
 * [Metasploit Domain Fronting With Microsoft Azure (@ch1gg1ns)](https://chigstuff.com/blog/metasploit-domain-fronting-with-microsoft-azure/)
 * [Alibaba CDN Domain Fronting - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/alibaba-cdn-domain-fronting-1c0754fa0142)
+* [CloudFlare Domain Fronting: an easy way to reach (and hide) a malware C&C - @theMiddle (Medium)](https://medium.com/@themiddleblue/cloudflare-domain-fronting-an-easy-way-to-reach-and-hide-a-malware-c-c-786255f0f437)
 
 ## PaaS Redirectors
 Many PaaS and SaaS providers provide a static subdomain or URL for use with a provisioned instance. If the associated domain is generally highly trusted, the instances could provide extra trust to your C2 infrastructure over a purchased domain and VPS.
@@ -568,6 +571,7 @@ Here are some of those resoources:
 * [Responsible Red Teams - Tim MalcomVetter (@malcomvetter)](https://medium.com/@malcomvetter/responsible-red-teams-1c6209fd43cc)
 * [Safe Red Team Infrastructure - Tim MalcomVetter (@malcomvetter)](https://medium.com/@malcomvetter/safe-red-team-infrastructure-c5d6a0f13fac)
 * [Red Team Infrastructure - AWS Encrypted EBS - @_rastamouse](https://rastamouse.me/2018/02/red-team-infrastructure---aws-encrypted-ebs/)
+* [Attack Infrastructure Logging (4-part series) - Gabriel Mathenge (@_theVIVI)](https://thevivi.net/category/infrastructure/)
 
 # Automating Deployments
 The topics covered in this wiki strengthen attack infrastrctures, but generally require a good deal of time to design and implement. Automation can be used to greatly reduce deployment times, allowing you to deploy more complex setups in less time.
