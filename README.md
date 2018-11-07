@@ -266,7 +266,7 @@ The following socat command seems to work well thanks to testing from @xorrior:
 socat udp4-recvfrom:53,reuseaddr,fork udp4-sendto:<IPADDRESS>; echo -ne
 ```
 
-[Redirecting Cobalt Strike DNS Beacons - Steve Borosh](http://www.rvrsh3ll.net/blog/offensive/redirecting-cobalt-strike-dns-beacons/)
+[Redirecting Cobalt Strike DNS Beacons - Steve Borosh](https://medium.com/rvrsh3ll/redirecting-cobalt-strike-dns-beacons-e3dcdb5a8b9b)
 
 
 ### iptables for DNS
@@ -482,7 +482,7 @@ For more information about hunting frontable domains, check out:
 * [Empire Domain Fronting - Chris Ross (@xorrior)](https://www.xorrior.com/Empire-Domain-Fronting/)
 * [Escape and Evasion Egressing Restricted Networks - Tom Steele (@_tomsteele) and Chris Patten](https://www.optiv.com/blog/escape-and-evasion-egressing-restricted-networks)
 * [Red Team Insights on HTTPS Domain Fronting Google Hosts Using Cobalt Strike](https://www.cyberark.com/threat-research-blog/red-team-insights-https-domain-fronting-google-hosts-using-cobalt-strike/) - [Will Vandevanter and Shay Nahari of CyberArk](https://www.cyberark.com)
-* [SSL Domain Fronting 101 - Steve Borosh (@424f424f)](http://www.rvrsh3ll.net/blog/offensive/ssl-domain-fronting-101/)
+* [SSL Domain Fronting 101 - Steve Borosh (@424f424f)](https://medium.com/rvrsh3ll/ssl-domain-fronting-101-4348d410c56f)
 * [How I Identified 93k Domain-Frontable CloudFront Domains - Chris Myers (@SWIZZLEZ_) and Barrett Adams (@PEEWPW)](https://www.peew.pw/blog/2018/2/22/how-i-identified-93k-domain-frontable-cloudfront-domains)
 * [Domain Fronting: Who Am I? - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/domain-fronting-who-am-i-3c982ccd52e6)
 * [Validated CloudFront SSL Domains - Vincent Yiu (@vysecurity)](https://medium.com/@vysec.private/validated-cloudfront-ssl-domains-27895822cea3)
