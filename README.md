@@ -586,6 +586,7 @@ Check out these resources about attack infrastructure automation:
 * [Red Baron GitHub Repo](https://github.com/Coalfire-Research/Red-Baron) - [Marcello (@byt3bl33d3r)](https://twitter.com/byt3bl33d3r)
 * [Automating Apache mod_rewrite and Cobalt Strike Malleable C2 for Intelligent Redirection](http://threatexpress.com/2018/02/automating-cobalt-strike-profiles-apache-mod_rewrite-htaccess-files-intelligent-c2-redirection/) - [Joe Vest (@joevest)](https://twitter.com/joevest)
 * [Modular Infrastructure with Terraform](https://blog.smallsec.ca/2018/05/17/modular-infrastructure-with-terraform/) - [Liam Somerville (@liamsomerville)](https://twitter.com/liamsomerville)
+* [Red Team Infrastructure](https://github.com/redteaminfra/redteam-infra/) - [Topher Timzen (@TTimzen)](https://twitter.com/ttimzen) & [r00tkillah](@r00tkillah)](https://twitter.com/r00tkillah) 
 
 # General Tips
 * **Document everything** - Running a complex Red Team infrastructure means many moving parts. Be sure to document each asset’s function and where its traffic is sent.
