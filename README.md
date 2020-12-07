@@ -570,7 +570,7 @@ Here are some of those resoources:
 
 * [Responsible Red Teams - Tim MalcomVetter (@malcomvetter)](https://medium.com/@malcomvetter/responsible-red-teams-1c6209fd43cc)
 * [Safe Red Team Infrastructure - Tim MalcomVetter (@malcomvetter)](https://medium.com/@malcomvetter/safe-red-team-infrastructure-c5d6a0f13fac)
-* [Red Team Infrastructure - AWS Encrypted EBS - @_rastamouse](https://rastamouse.me/2018/02/red-team-infrastructure---aws-encrypted-ebs/)
+* [Red Team Infrastructure - AWS Encrypted EBS - @_rastamouse](https://rastamouse.me/blog/encrypted-ebs/)
 * [Attack Infrastructure Logging (4-part series) - Gabriel Mathenge (@_theVIVI)](https://thevivi.net/category/infrastructure/)
 
 # Automating Deployments
