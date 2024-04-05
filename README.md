@@ -6,6 +6,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
 
 # Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Design Considerations](#design-considerations)
   - [Functional Segregation](#functional-segregation)
   - [Using Redirectors](#using-redirectors)
@@ -13,10 +14,14 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
   - [Further Resources](#further-resources)
 - [Domains](#domains)
   - [Categorization and Blacklist Checking Resources](#categorization-and-blacklist-checking-resources)
-- [Phishing](#phishing-setup)
+- [Phishing Setup](#phishing-setup)
   - [Easy Web-Based Phishing](#easy-web-based-phishing)
   - [Cobalt Strike Phishing](#cobalt-strike-phishing)
   - [Phishing Frameworks](#phishing-frameworks)
+    - [Gophish](#gophish)
+    - [Phishing Frenzy](#phishing-frenzy)
+    - [The Social-Engineer Toolkit](#the-social-engineer-toolkit)
+    - [FiercePhish (formerly FirePhish)](#fiercephish-formerly-firephish)
 - [Redirectors](#redirectors)
   - [SMTP](#smtp)
     - [Sendmail](#sendmail)
@@ -26,15 +31,16 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
   - [DNS](#dns)
     - [socat for DNS](#socat-for-dns)
     - [iptables for DNS](#iptables-for-dns)
+    - [DNS redirection can also be done behind NAT](#dns-redirection-can-also-be-done-behind-nat)
   - [HTTP(S)](#https)
-    - [socat vs mod_rewrite](#socat-vs-mod_rewrite)
+    - [socat vs mod\_rewrite](#socat-vs-mod_rewrite)
     - [socat for HTTP](#socat-for-http)
     - [iptables for HTTP](#iptables-for-http)
-    - [ssh for HTTP](#ssh-for-http)
+    - [SSH for HTTP](#ssh-for-http)
     - [Payloads and Web Redirection](#payloads-and-web-redirection)
     - [C2 Redirection](#c2-redirection)
       - [C2 Redirection with HTTPS](#c2-redirection-with-https)
-    - [Other Apache mod_rewrite Resources](#other-apache-mod_rewrite-resources)
+    - [Other Apache mod\_rewrite Resources](#other-apache-mod_rewrite-resources)
 - [Modifying C2 Traffic](#modifying-c2-traffic)
   - [Cobalt Strike](#cobalt-strike)
   - [Empire](#empire)
@@ -45,6 +51,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
   - [Other Third-Party C2](#other-third-party-c2)
 - [Obscuring Infrastructure](#obscuring-infrastructure)
 - [Securing Infrastructure](#securing-infrastructure)
+  - [Specific Hardening Resources](#specific-hardening-resources)
 - [Automating Deployments](#automating-deployments)
 - [General Tips](#general-tips)
 - [Thanks to Contributors](#thanks-to-contributors)
@@ -387,6 +394,7 @@ The intention behind redirecting C2 traffic is twofold: obscure the backend team
 * [Cobalt Strike HTTP C2 Redirectors with Apache mod_rewrite - Jeff Dimmock](https://bluescreenofjeff.com/2016-06-28-cobalt-strike-http-c2-redirectors-with-apache-mod_rewrite/)
 * [Securing your Empire C2 with Apache mod_rewrite - Gabriel Mathenge (@_theVIVI)](https://thevivi.net/2017/11/03/securing-your-empire-c2-with-apache-mod_rewrite/)
 * [Hybrid Cobalt Strike Redirectors](https://zachgrace.com/2018/02/20/cobalt_strike_redirectors.html) - [Zach Grace (@ztgrace)](https://twitter.com/ztgrace) and [@m0ther_](https://twitter.com/m0ther_)
+* [Transforming Azure Static Web Applications into C2 Redirectors - RoseSecurity](https://dev.to/rosesecurity/transforming-azure-static-web-applications-into-c2-redirectors-118m)
 
 #### C2 Redirection with HTTPS
 
@@ -529,7 +537,7 @@ For more details about how to do these and other tactics for multiple attack fra
 * [Hunting Red Team Meterpreter C2 Infrastructure](http://www.chokepoint.net/2017/04/hunting-red-team-meterpreter-c2.html) - [chokepoint.net](http://www.chokepoint.net/)
 * [Identifying Empire HTTP Listeners (Tenable Blog)](https://www.tenable.com/blog/identifying-empire-http-listeners) - [Jacob Baines](https://www.tenable.com/profile/jacob-baines)
 * [Host Header Manipulation - Vincent Yiu (@vysecurity)](https://vincentyiu.co.uk/host-header-manipulation/)
-
+* [Creative C2 Obfuscation: CloudFronting Through Firewalls and Hiding in Plain PCAP - RoseSecurity](https://dev.to/rosesecurity/creative-c2-obfuscation-cloudfronting-through-firewalls-and-hiding-in-plain-pcap-3dkg)
 
 # Securing Infrastructure
 Attack infrastructure can be attacked just the same as any other internet-connected host, and it should be considered HIGHLY sensitive due to the data in use and connections into target environments.
