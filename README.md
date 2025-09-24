@@ -16,6 +16,7 @@ THANK YOU to all of the authors of the content referenced in this wiki and to al
 - [Phishing](#phishing-setup)
   - [Easy Web-Based Phishing](#easy-web-based-phishing)
   - [Cobalt Strike Phishing](#cobalt-strike-phishing)
+  - [Evilginx On-Premises Setup](#evilginx-on-premises-setup)
   - [Phishing Frameworks](#phishing-frameworks)
 - [Redirectors](#redirectors)
   - [SMTP](#smtp)
@@ -171,6 +172,94 @@ For more detailed information, check out these resources:
 * [Spear phishing with Cobalt Strike - Raphael Mudge](https://www.youtube.com/watch?v=V7UJjVcq2Ao)
 * [Advanced Threat Tactics (3 of 9) - Targeted Attacks - Raphael Mudge](https://www.youtube.com/watch?v=CxQfWtqpwRs)
 
+## Evilginx On-Premises Setup
+
+For red-team and phishing exercises where client trust and OPSEC matter, keeping captured client data and primary infrastructure on the customer's own servers (on-premises) provides significant advantages over cloud-only solutions. This approach uses cloud assets only for thin redirectors and fronts while maintaining sensitive operations internally.
+
+### Why Keep Client Data On-Premises
+
+- **Data ownership & legal footprint** - Storing captured credentials/session tokens on client-owned infrastructure avoids moving sensitive material into third-party cloud accounts, reducing legal risk and evidence sprawl
+- **Containment & auditability** - If logs/captures remain inside the client environment, it's easier to scope, audit, and destroy them after the exercise
+- **Operational security** - Cloud fronting (redirectors) can be churned, scaled, and automated while the sensitive back-end is isolated on a private network
+
+### Architecture Overview
+
+A robust on-premises Evilginx setup typically consists of:
+
+1. **Cloudflare (public front/redirectors)** - DNS + WAF + redirection rules. Handles TLS to the public and performs cookie checks/redirects so only valid flows reach the phishing surface
+2. **Caddy on an edge server (client-owned)** - Terminates TLS with internal/self-signed certs, removes cloud IOCs, and reverse proxies traffic into the private network
+3. **Private network (Tailscale/Headscale)** - Connects the Caddy host and the internal Evilginx host; avoids exposing Evilginx IPs to the public internet
+4. **Evilginx (on-premises)** - Runs inside the private network, receives proxied connections, and performs AiTM/credential capture
+
+### Cloudflare Firewall Rule Example
+
+Cookie gating reduces bot hits and automated scanning by requiring a specific cookie to access the phishing portal:
+
+```
+(http.host eq "portal.example.com")
+and (not http.cookie contains "session_token=abc123def456")
+and not (http.host eq "landing.example.com" and http.request.uri.path eq "/favicon.ico")
+```
+
+This rule redirects requests to the portal domain that don't contain the required cookie, while exempting favicon requests to prevent redirect loops.
+
+### Sample Caddy Configuration
+
+```caddyfile
+# Redirect direct IP access to prevent fingerprinting
+1.2.3.4 {
+    redir https://legitimate-site.com{uri} permanent
+}
+
+landing.example.com {
+    log {
+        output file /var/log/caddy/landing_access.log
+        format console
+    }
+    tls internal
+    encode gzip
+    reverse_proxy http://127.0.0.1:8000
+}
+
+portal.example.com {
+    log {
+        output file /var/log/caddy/portal_access.log
+        format console
+    }
+    tls internal
+    encode gzip
+    reverse_proxy https://evilginx:443 {
+        transport http {
+            versions 1.1
+            tls_insecure_skip_verify
+            tls_server_name portal.example.com
+        }
+        header_up Host portal.example.com
+        header_up X-Forwarded-Proto https
+    }
+}
+```
+
+### Running Evilginx
+
+Execute Evilginx on the internal node with appropriate flags:
+
+```bash
+./evilginx2 -p ./phishlets -t ./redirectors -developer -debug
+```
+
+**Important:** Evilginx should only be reachable from inside the private network; never publish its IP to public DNS.
+
+### OPSEC and Hardening Checklist
+
+1. **Never expose Evilginx IPs in public DNS** - Use private networking only
+2. **Keep sensitive data on client servers only** - Redirectors must not store captured credentials
+3. **Harden redirectors** - Rotate domains, use short TTLs, deploy multiple ephemeral redirectors
+4. **Implement WAF/firewall rules** - Use cookie checks, IP allowlists, or UA validation
+5. **Separate logging and retention** - Keep access logs on Caddy and capture logs on Evilginx host
+6. **Avoid fingerprints** - Don't use predictable patterns or identical TLS fingerprints
+
+This hybrid approach (public redirector/private capture) provides the resilience of cloud fronting while maintaining the security and legal advantages of keeping sensitive operations on-premises.
 
 ## Phishing Frameworks
 
