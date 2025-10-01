@@ -350,7 +350,7 @@ socat can be used to redirect incoming DNS packets on port 53 to our team server
 Edit 4/21/2017: 
 The following socat command seems to work well thanks to testing from @xorrior:
 ```
-socat udp4-recvfrom:53,reuseaddr,fork udp4-sendto:<IPADDRESS>; echo -ne
+socat udp4-recvfrom:53,reuseaddr,fork udp4-sendto:<IPADDRESS>:53; echo -ne
 ```
 
 [Redirecting Cobalt Strike DNS Beacons - Steve Borosh](https://medium.com/rvrsh3ll/redirecting-cobalt-strike-dns-beacons-e3dcdb5a8b9b)
