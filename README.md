@@ -115,7 +115,7 @@ Finally, make sure your DNS settings have propogated correctly.
 * [DNS Propogation Checker](https://dnschecker.org/)
 
 ## Categorization and Blacklist Checking Resources
-* [McAfee](https://trustedsource.org/en/feedback/url?action=checksingle)
+* [McAfee](https://sitelookup.mcafee.com/)
 * [Fortiguard](http://www.fortiguard.com/iprep)
 * [Symantec + BlueCoat](http://sitereview.bluecoat.com/sitereview.jsp)
 * [Checkpoint (requires free account)](https://www.checkpoint.com/urlcat/main.htm)
